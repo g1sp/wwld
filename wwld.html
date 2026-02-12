@@ -1,0 +1,869 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WWLD - What Would Lenny Do?</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Clash+Display:wght@400;600;700&family=Space+Mono:wght@400;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #FF6B35;
+            --secondary: #004E89;
+            --accent: #F7B801;
+            --dark: #0A0E27;
+            --light: #F5F7FA;
+            --success: #00D084;
+            --border: #E5E7EB;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #0A0E27 0%, #1a1f3a 100%);
+            min-height: 100vh;
+            color: #fff;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        /* ===== HERO SECTION ===== */
+        .hero {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+            margin-bottom: 80px;
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero-content h1 {
+            font-family: 'Clash Display', sans-serif;
+            font-size: 3.5rem;
+            font-weight: 700;
+            line-height: 1.1;
+            margin-bottom: 20px;
+            background: linear-gradient(135deg, #FF6B35 0%, #F7B801 50%, #00D084 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            letter-spacing: -1px;
+        }
+
+        .hero-content p {
+            font-size: 1.1rem;
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 30px;
+            line-height: 1.6;
+        }
+
+        .cta-badge {
+            display: inline-block;
+            background: rgba(255, 107, 53, 0.15);
+            border: 2px solid #FF6B35;
+            color: #FF6B35;
+            padding: 12px 24px;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 30px;
+            animation: pulse 3s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                box-shadow: 0 0 0 0 rgba(255, 107, 53, 0.4);
+            }
+            50% {
+                box-shadow: 0 0 0 10px rgba(255, 107, 53, 0);
+            }
+        }
+
+        .hero-image {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .lenny-card {
+            position: relative;
+            width: 320px;
+            height: 400px;
+            background: linear-gradient(135deg, rgba(255, 107, 53, 0.1) 0%, rgba(0, 78, 137, 0.1) 100%);
+            border: 3px solid #FF6B35;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(255, 107, 53, 0.2), 0 0 0 1px rgba(255, 255, 255, 0.1);
+            animation: float 3s ease-in-out infinite;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+
+        .lenny-placeholder {
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #FF6B35 0%, #F7B801 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 6rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .lenny-placeholder::before {
+            content: "👨‍💼";
+            position: absolute;
+            font-size: 8rem;
+            animation: smile 4s ease-in-out infinite;
+        }
+
+        @keyframes smile {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+
+        .badge-top {
+            position: absolute;
+            top: -10px;
+            right: -10px;
+            background: #00D084;
+            color: #0A0E27;
+            padding: 8px 16px;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            box-shadow: 0 10px 30px rgba(0, 208, 132, 0.3);
+            animation: bounce 2s ease-in-out infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0) rotate(5deg); }
+            50% { transform: translateY(-10px) rotate(-5deg); }
+        }
+
+        /* ===== INPUT SECTION ===== */
+        .input-section {
+            margin-bottom: 60px;
+            animation: fadeInUp 0.8s ease-out 0.2s backwards;
+        }
+
+        .input-label {
+            display: block;
+            font-family: 'Clash Display', sans-serif;
+            font-size: 1.8rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+            color: #fff;
+        }
+
+        .input-wrapper {
+            position: relative;
+            display: flex;
+            gap: 12px;
+        }
+
+        .problem-input {
+            flex: 1;
+            background: rgba(255, 255, 255, 0.05);
+            border: 2px solid rgba(255, 107, 53, 0.3);
+            border-radius: 12px;
+            padding: 18px 24px;
+            font-size: 1rem;
+            color: #fff;
+            font-family: 'Space Mono', monospace;
+            transition: all 0.3s ease;
+            outline: none;
+        }
+
+        .problem-input::placeholder {
+            color: rgba(255, 255, 255, 0.4);
+        }
+
+        .problem-input:focus {
+            border-color: #FF6B35;
+            background: rgba(255, 255, 255, 0.08);
+            box-shadow: 0 0 0 4px rgba(255, 107, 53, 0.1);
+        }
+
+        .ask-button {
+            background: linear-gradient(135deg, #FF6B35 0%, #F7B801 100%);
+            color: #0A0E27;
+            border: none;
+            padding: 18px 40px;
+            border-radius: 12px;
+            font-family: 'Clash Display', sans-serif;
+            font-size: 1rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            box-shadow: 0 10px 30px rgba(255, 107, 53, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .ask-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.2);
+            transition: left 0.4s ease;
+        }
+
+        .ask-button:hover::before {
+            left: 100%;
+        }
+
+        .ask-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 15px 40px rgba(255, 107, 53, 0.4);
+        }
+
+        .ask-button:active {
+            transform: translateY(0);
+        }
+
+        /* ===== QUICK PROBLEMS ===== */
+        .quick-problems {
+            margin-bottom: 40px;
+            animation: fadeInUp 0.8s ease-out 0.3s backwards;
+        }
+
+        .quick-label {
+            font-size: 0.85rem;
+            color: rgba(255, 255, 255, 0.6);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 12px;
+            display: block;
+        }
+
+        .problem-chips {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .chip {
+            background: rgba(255, 107, 53, 0.15);
+            border: 2px solid rgba(255, 107, 53, 0.4);
+            color: #FF6B35;
+            padding: 10px 16px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+
+        .chip:hover {
+            background: rgba(255, 107, 53, 0.25);
+            border-color: #FF6B35;
+            transform: translateY(-2px);
+        }
+
+        .chip.active {
+            background: #FF6B35;
+            color: #0A0E27;
+            border-color: #FF6B35;
+        }
+
+        /* ===== RESULTS SECTION ===== */
+        .results-section {
+            display: none;
+            animation: fadeInUp 0.6s ease-out;
+        }
+
+        .results-section.active {
+            display: block;
+        }
+
+        .back-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: transparent;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            color: #fff;
+            padding: 10px 16px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            margin-bottom: 30px;
+            transition: all 0.3s ease;
+        }
+
+        .back-button:hover {
+            border-color: #FF6B35;
+            color: #FF6B35;
+        }
+
+        .results-header {
+            margin-bottom: 40px;
+        }
+
+        .results-header h2 {
+            font-family: 'Clash Display', sans-serif;
+            font-size: 2.2rem;
+            margin-bottom: 10px;
+            background: linear-gradient(135deg, #FF6B35 0%, #F7B801 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .results-subtext {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 1rem;
+        }
+
+        .solutions-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 24px;
+            margin-bottom: 40px;
+        }
+
+        .solution-card {
+            background: linear-gradient(135deg, rgba(255, 107, 53, 0.1) 0%, rgba(0, 78, 137, 0.1) 100%);
+            border: 2px solid rgba(255, 107, 53, 0.2);
+            border-radius: 16px;
+            padding: 28px;
+            transition: all 0.4s ease;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            animation: fadeInUp 0.6s ease-out backwards;
+        }
+
+        .solution-card:nth-child(1) { animation-delay: 0.1s; }
+        .solution-card:nth-child(2) { animation-delay: 0.2s; }
+        .solution-card:nth-child(3) { animation-delay: 0.3s; }
+
+        .solution-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+            transition: left 0.6s ease;
+        }
+
+        .solution-card:hover::before {
+            left: 100%;
+        }
+
+        .solution-card:hover {
+            border-color: #FF6B35;
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(255, 107, 53, 0.15);
+        }
+
+        .speaker-icon {
+            font-size: 2.5rem;
+            margin-bottom: 12px;
+            display: block;
+        }
+
+        .speaker-name {
+            font-family: 'Clash Display', sans-serif;
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: #FF6B35;
+            margin-bottom: 8px;
+        }
+
+        .speaker-role {
+            font-size: 0.85rem;
+            color: rgba(255, 255, 255, 0.6);
+            margin-bottom: 16px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .solution-insight {
+            font-size: 0.95rem;
+            line-height: 1.6;
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 16px;
+        }
+
+        .framework-tag {
+            display: inline-block;
+            background: rgba(0, 208, 132, 0.2);
+            color: #00D084;
+            padding: 6px 12px;
+            border-radius: 6px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-right: 8px;
+            margin-bottom: 8px;
+        }
+
+        .listen-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            color: #FF6B35;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            margin-top: 12px;
+            transition: all 0.3s ease;
+        }
+
+        .listen-link:hover {
+            gap: 10px;
+        }
+
+        /* ===== LOADING STATE ===== */
+        .loading {
+            display: none;
+            text-align: center;
+            padding: 60px 20px;
+        }
+
+        .loading.active {
+            display: block;
+        }
+
+        .loading-spinner {
+            width: 50px;
+            height: 50px;
+            border: 4px solid rgba(255, 107, 53, 0.2);
+            border-top-color: #FF6B35;
+            border-radius: 50%;
+            animation: spin 0.8s linear infinite;
+            margin: 0 auto 20px;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        .loading-text {
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 1rem;
+            margin-bottom: 10px;
+        }
+
+        .loading-subtext {
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 0.9rem;
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 768px) {
+            .hero {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .hero-content h1 {
+                font-size: 2.2rem;
+            }
+
+            .lenny-card {
+                width: 250px;
+                height: 320px;
+            }
+
+            .problem-chips {
+                flex-direction: column;
+            }
+
+            .chip {
+                width: 100%;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- HERO SECTION -->
+        <div class="hero">
+            <div class="hero-content">
+                <span class="cta-badge">🎯 ASK LENNY'S BRAIN</span>
+                <h1>What Would<br>Lenny Do?</h1>
+                <p>Stuck on a problem? Get advice from 50+ world-class founders, PMs, and growth leaders that have been on Lenny's podcast. We've mined 300+ episodes to give you the exact frameworks and insights you need.</p>
+            </div>
+            <div class="hero-image">
+                <div class="lenny-card">
+                    <div class="lenny-placeholder"></div>
+                    <div class="badge-top">🧠 WISDOM</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- INPUT SECTION -->
+        <div class="input-section">
+            <label class="input-label">What's your problem?</label>
+
+            <div class="quick-problems">
+                <span class="quick-label">💡 Popular Problems</span>
+                <div class="problem-chips">
+                    <div class="chip" onclick="selectProblem(this, 'How do I know if we have product-market fit?')">Product-Market Fit</div>
+                    <div class="chip" onclick="selectProblem(this, 'My engineering and product team don\'t get along. How do I fix this?')">Product-Eng Conflict</div>
+                    <div class="chip" onclick="selectProblem(this, 'How do I prioritize what to build next?')">Prioritization</div>
+                    <div class="chip" onclick="selectProblem(this, 'We\'re burning out our team. What should we do?')">Team Burnout</div>
+                    <div class="chip" onclick="selectProblem(this, 'How do we launch and market a new product?')">Go-to-Market</div>
+                    <div class="chip" onclick="selectProblem(this, 'How do I build a high-performing product team?')">Building Teams</div>
+                </div>
+            </div>
+
+            <div class="input-wrapper">
+                <input
+                    type="text"
+                    class="problem-input"
+                    id="problemInput"
+                    placeholder="Or type your own problem here... (e.g., 'How do I communicate better with my CEO?')"
+                    onkeypress="handleKeyPress(event)"
+                />
+                <button class="ask-button" onclick="askLenny()">ASK</button>
+            </div>
+        </div>
+
+        <!-- LOADING STATE -->
+        <div class="loading" id="loadingState">
+            <div class="loading-spinner"></div>
+            <div class="loading-text">Consulting with Lenny's brain...</div>
+            <div class="loading-subtext">Extracting wisdom from 300+ episodes</div>
+        </div>
+
+        <!-- RESULTS SECTION -->
+        <div class="results-section" id="resultsSection">
+            <button class="back-button" onclick="goBack()">← Back to WWLD</button>
+            <div class="results-header">
+                <h2 id="resultsTitle">Here's What Lenny Would Do</h2>
+                <p class="results-subtext" id="resultsSubtext">Based on advice from top leaders</p>
+            </div>
+            <div class="solutions-grid" id="solutionsGrid"></div>
+        </div>
+    </div>
+
+    <script>
+        // Comprehensive dataset of solutions mapped to problems
+        const solutionDatabase = {
+            "product-market-fit": [
+                {
+                    speaker: "Sean Ellis",
+                    role: "Growth Expert & PMF Pioneer",
+                    icon: "📈",
+                    insight: "Product-market fit is when your customer growth accelerates and becomes self-sustaining. You'll know it when users are begging for your product. If you're spending massive money to acquire users and they don't stick around, you don't have it yet.",
+                    framework: "growth loop",
+                    framework2: "retention metrics",
+                    episode: "Sean Ellis on Product-Market Fit"
+                },
+                {
+                    speaker: "Brian Balfour",
+                    role: "Growth Strategy Leader",
+                    icon: "🎯",
+                    insight: "PMF signals include: 40% of users would be very disappointed if you went away, viral coefficient > 1, retention curves that flatten rather than drop, and organic growth becoming significant. Track these obsessively.",
+                    framework: "viral coefficient",
+                    framework2: "cohort retention",
+                    episode: "Brian Balfour on Growth Loops"
+                },
+                {
+                    speaker: "Marty Cagan",
+                    role: "Product Strategy Legend",
+                    icon: "🚀",
+                    insight: "Most teams confuse traction with PMF. True PMF means customers are solving a problem so critical they'd fight you to keep your product. If they're lukewarm, you're not there yet. Keep iterating on the core problem.",
+                    framework: "problem hypothesis",
+                    framework2: "customer interviews",
+                    episode: "Marty Cagan on Empowered Teams"
+                }
+            ],
+            "product-eng-conflict": [
+                {
+                    speaker: "Brian Chesky",
+                    role: "Airbnb CEO & Product Leader",
+                    icon: "🤝",
+                    insight: "The health of your company is determined by how close engineering and product are. They shouldn't be in different universes. Make sure engineers understand the 'why' behind features and are part of the problem-solving journey from day one.",
+                    framework: "cross-functional alignment",
+                    framework2: "shared goals",
+                    episode: "Brian Chesky on Product Management"
+                },
+                {
+                    speaker: "Marty Cagan",
+                    role: "Product Strategy Legend",
+                    icon: "⚙️",
+                    insight: "The issue is usually that PMs tell engineers WHAT to build instead of WHY. You need true product engineers who understand the problem deeply. Hire for curiosity and problem-solving, not just coding ability.",
+                    framework: "empowered teams",
+                    framework2: "problem ownership",
+                    episode: "Marty Cagan on Real Teams"
+                },
+                {
+                    speaker: "Will Larson",
+                    role: "Engineering Leadership Expert",
+                    icon: "🛠️",
+                    insight: "Engineers respect clarity and autonomy. If product keeps changing their mind or makes decisions without input, they'll disengage. Give them the context, trust them to figure out the 'how,' and involve them early.",
+                    framework: "autonomy & trust",
+                    framework2: "early involvement",
+                    episode: "Will Larson on Scaling Engineering"
+                }
+            ],
+            "prioritization": [
+                {
+                    speaker: "Jake Knapp & John Zeratsky",
+                    role: "Sprint & Foundation Framework Creators",
+                    icon: "🎯",
+                    insight: "Most teams don't know what they're solving for. Before you prioritize, you need clarity on the core problem and who you're solving for. Run a Foundation Sprint to get team alignment on the hypothesis before building.",
+                    framework: "foundation sprint",
+                    framework2: "problem clarity",
+                    episode: "Jake Knapp on Click & Foundation Sprints"
+                },
+                {
+                    speaker: "Richard Rumelt",
+                    role: "Strategy & Focus Expert",
+                    icon: "🎪",
+                    insight: "Strategy is about saying no. Prioritization isn't about picking top 10 things. It's about recognizing the ONE or TWO things that create disproportionate value. Everything else is distraction.",
+                    framework: "strategic focus",
+                    framework2: "leverage analysis",
+                    episode: "Richard Rumelt on Good Strategy"
+                },
+                {
+                    speaker: "Itamar Gilad",
+                    role: "Product Discovery Expert",
+                    icon: "🔍",
+                    insight: "Use RICE or similar frameworks: Reach (how many users affected), Impact (value to each), Confidence (how sure are you), Effort (resources needed). But these are inputs to strategy, not the strategy itself.",
+                    framework: "rice framework",
+                    framework2: "weighted scoring",
+                    episode: "Itamar Gilad on Product Discovery"
+                }
+            ],
+            "team-burnout": [
+                {
+                    speaker: "Andy Johns",
+                    role: "Mental Health & Wellbeing Advocate",
+                    icon: "❤️",
+                    insight: "Burnout is real and it's a silent killer in tech. When you see sleep suffering, relationships strained, or physical health failing, something is wrong. These aren't day-to-day stresses—they're signals to STOP and change course.",
+                    framework: "wellbeing signals",
+                    framework2: "root cause analysis",
+                    episode: "Andy Johns on Mental Health in Tech"
+                },
+                {
+                    speaker: "Jason Fried",
+                    role: "Basecamp Founder & Culture Expert",
+                    icon: "🏢",
+                    insight: "Burnout comes from unsustainable pace compounded with lack of autonomy and clarity. Give your team autonomy over how they work, clarity on goals, and permission to actually rest. A well-rested team outproduces an exhausted one.",
+                    framework: "sustainable pace",
+                    framework2: "autonomy culture",
+                    episode: "Jason Fried on Company Culture"
+                },
+                {
+                    speaker: "Jerry Colonna",
+                    role: "Executive Coach & Conscious Leadership",
+                    icon: "🧘",
+                    insight: "Burnout is often a symptom of leadership not being conscious of the culture they're creating. Start with yourself. Are YOU modeling sustainable work? Your team follows your behavior, not your words.",
+                    framework: "conscious leadership",
+                    framework2: "role modeling",
+                    episode: "Jerry Colonna on Leadership"
+                }
+            ],
+            "go-to-market": [
+                {
+                    speaker: "Jason M Lemkin",
+                    role: "B2B SaaS & Sales Expert",
+                    icon: "📢",
+                    insight: "Most companies launch features without a GTM plan. You need: a clear value prop, target customer profile, channel strategy, messaging, and sales approach. Without this, even great products fail.",
+                    framework: "gtm strategy",
+                    framework2: "value prop",
+                    episode: "Jason M Lemkin on B2B SaaS"
+                },
+                {
+                    speaker: "April Dunford",
+                    role: "Product Positioning Expert",
+                    icon: "🎤",
+                    insight: "Positioning is about describing your product in the context of competitive alternatives. Most companies fail because they don't articulate WHY their product is different. Clear positioning makes your GTM 10x easier.",
+                    framework: "positioning framework",
+                    framework2: "competitive context",
+                    episode: "April Dunford on Positioning"
+                },
+                {
+                    speaker: "Andy Raskin",
+                    role: "Sales Messaging Strategist",
+                    icon: "💬",
+                    insight: "Your messaging should tell a story that customers can relate to. Start with the world before your product (problem), show the world after (outcome), then show your product as the bridge. This resonates way better than feature lists.",
+                    framework: "story-based messaging",
+                    framework2: "customer journey",
+                    episode: "Andy Raskin on Sales Positioning"
+                }
+            ],
+            "building-teams": [
+                {
+                    speaker: "Marty Cagan",
+                    role: "Product Leadership Expert",
+                    icon: "👥",
+                    insight: "Build empowered product teams, not feature teams. Feature teams execute. Empowered teams own a problem and have autonomy to solve it. The culture, coaching, and team composition make all the difference.",
+                    framework: "empowered teams",
+                    framework2: "cross-functional",
+                    episode: "Marty Cagan on Building Teams"
+                },
+                {
+                    speaker: "Ken Norton",
+                    role: "Product Manager Coach",
+                    icon: "🎓",
+                    insight: "Hire PMs for curiosity, communication, and analytical thinking—not just domain expertise. Your best PMs learn the domain quickly. Culture and execution matter way more than pedigree.",
+                    framework: "pm hiring criteria",
+                    framework2: "cultural fit",
+                    episode: "Ken Norton on Great PMs"
+                },
+                {
+                    speaker: "Melissa Perri",
+                    role: "Product Operations Leader",
+                    icon: "⚙️",
+                    insight: "As you scale, PMs get buried in operational work. Create a product operations function to handle roadmapping infrastructure, data access, and processes. This frees PMs to focus on strategy and customer problems.",
+                    framework: "product ops",
+                    framework2: "leverage & scale",
+                    episode: "Melissa Perri on Product Operations"
+                }
+            ]
+        };
+
+        let currentProblemKey = null;
+
+        function selectProblem(element, problemText) {
+            // Remove active class from all chips
+            document.querySelectorAll('.chip').forEach(chip => chip.classList.remove('active'));
+            // Add active class to clicked chip
+            element.classList.add('active');
+            // Set input value
+            document.getElementById('problemInput').value = problemText;
+            currentProblemKey = problemText.toLowerCase();
+        }
+
+        function handleKeyPress(event) {
+            if (event.key === 'Enter') {
+                askLenny();
+            }
+        }
+
+        function askLenny() {
+            const input = document.getElementById('problemInput').value.trim();
+            if (!input) {
+                alert('Please enter a problem or select one of the suggestions');
+                return;
+            }
+
+            // Map input to solution category
+            const mappings = {
+                'product-market fit': 'product-market-fit',
+                'pmf': 'product-market-fit',
+                'product eng': 'product-eng-conflict',
+                'engineering': 'product-eng-conflict',
+                'prioriti': 'prioritization',
+                'what to build': 'prioritization',
+                'roadmap': 'prioritization',
+                'burnout': 'team-burnout',
+                'team': 'team-burnout',
+                'mental health': 'team-burnout',
+                'launch': 'go-to-market',
+                'marketing': 'go-to-market',
+                'gtm': 'go-to-market',
+                'growth': 'go-to-market',
+                'building team': 'building-teams',
+                'hiring': 'building-teams',
+                'team structure': 'building-teams'
+            };
+
+            let solutionKey = null;
+            const lowerInput = input.toLowerCase();
+
+            for (const [keyword, key] of Object.entries(mappings)) {
+                if (lowerInput.includes(keyword)) {
+                    solutionKey = key;
+                    break;
+                }
+            }
+
+            // Show loading
+            document.getElementById('loadingState').classList.add('active');
+            document.getElementById('resultsSection').classList.remove('active');
+
+            // Simulate thinking (better UX)
+            setTimeout(() => {
+                displayResults(input, solutionKey);
+            }, 1500);
+        }
+
+        function displayResults(problem, solutionKey) {
+            document.getElementById('loadingState').classList.remove('active');
+
+            const solutions = solutionKey && solutionDatabase[solutionKey]
+                ? solutionDatabase[solutionKey]
+                : solutionDatabase['product-market-fit']; // default
+
+            document.getElementById('resultsTitle').textContent = `Here's What Lenny Would Do`;
+            document.getElementById('resultsSubtext').textContent = `About: "${problem}"`;
+
+            const grid = document.getElementById('solutionsGrid');
+            grid.innerHTML = solutions.map(solution => `
+                <div class="solution-card">
+                    <span class="speaker-icon">${solution.icon}</span>
+                    <div class="speaker-name">${solution.speaker}</div>
+                    <div class="speaker-role">${solution.role}</div>
+                    <p class="solution-insight">${solution.insight}</p>
+                    <div>
+                        <span class="framework-tag">${solution.framework}</span>
+                        <span class="framework-tag">${solution.framework2}</span>
+                    </div>
+                    <a href="#" class="listen-link">
+                        🎧 Listen to episode →
+                    </a>
+                </div>
+            `).join('');
+
+            document.getElementById('resultsSection').classList.add('active');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function goBack() {
+            document.getElementById('resultsSection').classList.remove('active');
+            document.getElementById('problemInput').value = '';
+            document.querySelectorAll('.chip').forEach(chip => chip.classList.remove('active'));
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+    </script>
+</body>
+</html>

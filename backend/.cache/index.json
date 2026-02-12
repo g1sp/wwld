@@ -1,0 +1,37 @@
+{
+  "b05355f3f78b4afc4af62fdbff0d1c2b": {
+    "problem": "How do I prioritize?",
+    "category": "prioritization",
+    "timestamp": "2026-02-11T23:39:37.199565"
+  },
+  "2552c0912a367374a1c053d58057c040": {
+    "problem": "How do I build a great team?",
+    "category": "product-eng-conflict",
+    "timestamp": "2026-02-11T23:39:43.868903"
+  },
+  "9a934534d66f977d4d0ef06e715051a1": {
+    "problem": "How do I prioritize what to build?",
+    "category": "prioritization",
+    "timestamp": "2026-02-11T23:40:57.777394"
+  },
+  "9025514e7315905f896f9f7bfb3e0035": {
+    "problem": "How do we scale without losing culture?",
+    "category": "scaling",
+    "timestamp": "2026-02-11T23:41:11.254823"
+  },
+  "2944a03a60b3a1dfaf85f37762653a56": {
+    "problem": "How do I know if we have product-market fit?",
+    "category": "product-market fit",
+    "timestamp": "2026-02-11T23:53:45.025229"
+  },
+  "013201065eff8965578b37b3ba3b97a5": {
+    "problem": "We're burning out our team. What should we do?",
+    "category": "product-eng-conflict",
+    "timestamp": "2026-02-11T23:53:52.754203"
+  },
+  "e33390e525754e9f266499202dc0a7b8": {
+    "problem": "How do I prioritize what to build next?",
+    "category": "prioritization",
+    "timestamp": "2026-02-11T23:54:08.317879"
+  }
+}

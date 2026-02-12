@@ -1,0 +1,1517 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WWLD - What Would Lenny Do?</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Clash+Display:wght@400;600;700&family=Space+Mono:wght@400;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #FF6B35;
+            --secondary: #004E89;
+            --accent: #F7B801;
+            --dark: #0A0E27;
+            --light: #F5F7FA;
+            --success: #00D084;
+            --border: #E5E7EB;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #0A0E27 0%, #1a1f3a 100%);
+            min-height: 100vh;
+            color: #fff;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        /* ===== HERO SECTION ===== */
+        .hero {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+            margin-bottom: 80px;
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero-content h1 {
+            font-family: 'Clash Display', sans-serif;
+            font-size: 3.5rem;
+            font-weight: 700;
+            line-height: 1.1;
+            margin-bottom: 20px;
+            background: linear-gradient(135deg, #FF6B35 0%, #F7B801 50%, #00D084 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            letter-spacing: -1px;
+        }
+
+        .hero-content p {
+            font-size: 1.1rem;
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 30px;
+            line-height: 1.6;
+        }
+
+        .cta-badge {
+            display: inline-block;
+            background: rgba(255, 107, 53, 0.15);
+            border: 2px solid #FF6B35;
+            color: #FF6B35;
+            padding: 12px 24px;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 30px;
+            animation: pulse 3s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                box-shadow: 0 0 0 0 rgba(255, 107, 53, 0.4);
+            }
+            50% {
+                box-shadow: 0 0 0 10px rgba(255, 107, 53, 0);
+            }
+        }
+
+        .hero-image {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .lenny-card {
+            position: relative;
+            width: 320px;
+            height: 400px;
+            background: linear-gradient(135deg, rgba(255, 107, 53, 0.1) 0%, rgba(0, 78, 137, 0.1) 100%);
+            border: 3px solid #FF6B35;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(255, 107, 53, 0.2), 0 0 0 1px rgba(255, 255, 255, 0.1);
+            animation: float 3s ease-in-out infinite;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+
+        .lenny-placeholder {
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #FF6B35 0%, #F7B801 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 6rem;
+            position: relative;
+            overflow: hidden;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .lenny-placeholder::before {
+            content: "";
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background-image: url('lennypic.jpeg');
+            background-size: cover;
+            background-position: center;
+            animation: zoom 4s ease-in-out infinite;
+        }
+
+        @keyframes zoom {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        .badge-top {
+            position: absolute;
+            top: -10px;
+            right: -10px;
+            background: #00D084;
+            color: #0A0E27;
+            padding: 8px 16px;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            box-shadow: 0 10px 30px rgba(0, 208, 132, 0.3);
+            animation: bounce 2s ease-in-out infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0) rotate(5deg); }
+            50% { transform: translateY(-10px) rotate(-5deg); }
+        }
+
+        /* ===== INPUT SECTION ===== */
+        .input-section {
+            margin-bottom: 60px;
+            animation: fadeInUp 0.8s ease-out 0.2s backwards;
+        }
+
+        .input-label {
+            display: block;
+            font-family: 'Clash Display', sans-serif;
+            font-size: 1.8rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+            color: #fff;
+        }
+
+        .input-wrapper {
+            position: relative;
+            display: flex;
+            gap: 12px;
+        }
+
+        .problem-input {
+            flex: 1;
+            background: rgba(255, 255, 255, 0.05);
+            border: 2px solid rgba(255, 107, 53, 0.3);
+            border-radius: 12px;
+            padding: 18px 24px;
+            font-size: 1rem;
+            color: #fff;
+            font-family: 'Space Mono', monospace;
+            transition: all 0.3s ease;
+            outline: none;
+        }
+
+        .problem-input::placeholder {
+            color: rgba(255, 255, 255, 0.4);
+        }
+
+        .problem-input:focus {
+            border-color: #FF6B35;
+            background: rgba(255, 255, 255, 0.08);
+            box-shadow: 0 0 0 4px rgba(255, 107, 53, 0.1);
+        }
+
+        .ask-button {
+            background: linear-gradient(135deg, #FF6B35 0%, #F7B801 100%);
+            color: #0A0E27;
+            border: none;
+            padding: 18px 40px;
+            border-radius: 12px;
+            font-family: 'Clash Display', sans-serif;
+            font-size: 1rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            box-shadow: 0 10px 30px rgba(255, 107, 53, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .ask-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.2);
+            transition: left 0.4s ease;
+        }
+
+        .ask-button:hover::before {
+            left: 100%;
+        }
+
+        .ask-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 15px 40px rgba(255, 107, 53, 0.4);
+        }
+
+        .ask-button:active {
+            transform: translateY(0);
+        }
+
+        .ask-button:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+        }
+
+        /* ===== QUICK PROBLEMS ===== */
+        .quick-problems {
+            margin-bottom: 40px;
+            animation: fadeInUp 0.8s ease-out 0.3s backwards;
+        }
+
+        .quick-label {
+            font-size: 0.85rem;
+            color: rgba(255, 255, 255, 0.6);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 12px;
+            display: block;
+        }
+
+        .problem-chips {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .chip {
+            background: rgba(255, 107, 53, 0.15);
+            border: 2px solid rgba(255, 107, 53, 0.4);
+            color: #FF6B35;
+            padding: 10px 16px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+
+        .chip:hover {
+            background: rgba(255, 107, 53, 0.25);
+            border-color: #FF6B35;
+            transform: translateY(-2px);
+        }
+
+        .chip.active {
+            background: #FF6B35;
+            color: #0A0E27;
+            border-color: #FF6B35;
+        }
+
+        /* ===== RESULTS SECTION ===== */
+        .results-section {
+            display: none;
+            animation: fadeInUp 0.6s ease-out;
+        }
+
+        .results-section.active {
+            display: block;
+        }
+
+        .back-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: transparent;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            color: #fff;
+            padding: 10px 16px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            margin-bottom: 30px;
+            transition: all 0.3s ease;
+        }
+
+        .back-button:hover {
+            border-color: #FF6B35;
+            color: #FF6B35;
+        }
+
+        .results-header {
+            margin-bottom: 40px;
+        }
+
+        .results-header h2 {
+            font-family: 'Clash Display', sans-serif;
+            font-size: 2.2rem;
+            margin-bottom: 10px;
+            background: linear-gradient(135deg, #FF6B35 0%, #F7B801 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .results-subtext {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 1rem;
+        }
+
+        .solutions-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 24px;
+            margin-bottom: 40px;
+        }
+
+        .solution-card {
+            background: linear-gradient(135deg, rgba(255, 107, 53, 0.1) 0%, rgba(0, 78, 137, 0.1) 100%);
+            border: 2px solid rgba(255, 107, 53, 0.2);
+            border-radius: 16px;
+            padding: 28px;
+            transition: all 0.4s ease;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            animation: fadeInUp 0.6s ease-out backwards;
+        }
+
+        .solution-card:nth-child(1) { animation-delay: 0.1s; }
+        .solution-card:nth-child(2) { animation-delay: 0.2s; }
+        .solution-card:nth-child(3) { animation-delay: 0.3s; }
+
+        .solution-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+            transition: left 0.6s ease;
+        }
+
+        .solution-card:hover::before {
+            left: 100%;
+        }
+
+        .solution-card:hover {
+            border-color: #FF6B35;
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(255, 107, 53, 0.15);
+        }
+
+        .speaker-icon {
+            font-size: 2.5rem;
+            margin-bottom: 12px;
+            display: block;
+        }
+
+        .speaker-name {
+            font-family: 'Clash Display', sans-serif;
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: #FF6B35;
+            margin-bottom: 8px;
+        }
+
+        .speaker-role {
+            font-size: 0.85rem;
+            color: rgba(255, 255, 255, 0.6);
+            margin-bottom: 16px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .solution-insight {
+            font-size: 0.95rem;
+            line-height: 1.6;
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 16px;
+            font-style: italic;
+            border-left: 3px solid #FF6B35;
+            padding-left: 16px;
+        }
+
+        .framework-tag {
+            display: inline-block;
+            background: rgba(0, 208, 132, 0.2);
+            color: #00D084;
+            padding: 6px 12px;
+            border-radius: 6px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-right: 8px;
+            margin-bottom: 8px;
+        }
+
+        .episode-info {
+            margin-top: 12px;
+            padding-top: 12px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 0.85rem;
+            color: rgba(255, 255, 255, 0.5);
+        }
+
+        .listen-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            color: #FF6B35;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            margin-top: 12px;
+            transition: all 0.3s ease;
+        }
+
+        .listen-link:hover {
+            gap: 10px;
+        }
+
+        /* ===== LOADING STATE ===== */
+        .loading {
+            display: none;
+            text-align: center;
+            padding: 60px 20px;
+        }
+
+        .loading.active {
+            display: block;
+        }
+
+        .loading-spinner {
+            width: 50px;
+            height: 50px;
+            border: 4px solid rgba(255, 107, 53, 0.2);
+            border-top-color: #FF6B35;
+            border-radius: 50%;
+            animation: spin 0.8s linear infinite;
+            margin: 0 auto 20px;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        .loading-text {
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 1rem;
+            margin-bottom: 10px;
+        }
+
+        .loading-subtext {
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 0.9rem;
+        }
+
+        .error-message {
+            background: rgba(255, 107, 53, 0.1);
+            border: 2px solid #FF6B35;
+            color: #FF6B35;
+            padding: 16px 24px;
+            border-radius: 12px;
+            margin-bottom: 20px;
+            display: none;
+        }
+
+        .error-message.active {
+            display: block;
+        }
+
+        /* ===== HISTORY PANEL ===== */
+        .history-panel {
+            background: linear-gradient(135deg, rgba(255, 107, 53, 0.1) 0%, rgba(0, 78, 137, 0.1) 100%);
+            border: 2px solid rgba(255, 107, 53, 0.2);
+            border-radius: 16px;
+            padding: 24px;
+            margin-bottom: 40px;
+            animation: fadeInUp 0.6s ease-out;
+        }
+
+        .panel-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 16px;
+        }
+
+        .panel-title {
+            font-family: 'Clash Display', sans-serif;
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #FF6B35;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .panel-toggle {
+            background: transparent;
+            border: none;
+            color: #FF6B35;
+            cursor: pointer;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+        }
+
+        .panel-toggle:hover {
+            transform: rotate(180deg);
+        }
+
+        .history-list {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            max-height: 300px;
+            overflow-y: auto;
+        }
+
+        .history-item {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 107, 53, 0.3);
+            border-radius: 8px;
+            padding: 12px 16px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .history-item:hover {
+            background: rgba(255, 107, 53, 0.15);
+            border-color: #FF6B35;
+        }
+
+        .history-item-text {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .history-item-problem {
+            color: #fff;
+            font-size: 0.9rem;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .history-item-meta {
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 0.75rem;
+        }
+
+        .history-item-actions {
+            display: flex;
+            gap: 8px;
+            margin-left: 12px;
+        }
+
+        .history-reask {
+            background: transparent;
+            border: 1px solid #00D084;
+            color: #00D084;
+            padding: 4px 12px;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .history-reask:hover {
+            background: rgba(0, 208, 132, 0.2);
+        }
+
+        .clear-button {
+            background: transparent;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            color: rgba(255, 255, 255, 0.6);
+            padding: 6px 12px;
+            border-radius: 6px;
+            font-size: 0.75rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .clear-button:hover {
+            border-color: #FF6B35;
+            color: #FF6B35;
+        }
+
+        /* ===== FAVORITES PANEL ===== */
+        .favorites-panel {
+            background: linear-gradient(135deg, rgba(255, 107, 53, 0.1) 0%, rgba(0, 78, 137, 0.1) 100%);
+            border: 2px solid rgba(255, 107, 53, 0.2);
+            border-radius: 16px;
+            padding: 24px;
+            margin-top: 40px;
+            animation: fadeInUp 0.6s ease-out;
+        }
+
+        .favorites-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 16px;
+            max-height: 500px;
+            overflow-y: auto;
+        }
+
+        .favorite-card {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 107, 53, 0.3);
+            border-radius: 12px;
+            padding: 16px;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .favorite-card:hover {
+            background: rgba(255, 107, 53, 0.15);
+            border-color: #FF6B35;
+        }
+
+        .favorite-remove {
+            position: absolute;
+            top: 8px;
+            right: 8px;
+            background: transparent;
+            border: none;
+            color: #FF6B35;
+            cursor: pointer;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+        }
+
+        .favorite-remove:hover {
+            transform: scale(1.2);
+        }
+
+        .favorite-icon {
+            font-size: 1.5rem;
+            margin-bottom: 8px;
+        }
+
+        .favorite-speaker {
+            font-weight: 600;
+            color: #FF6B35;
+            font-size: 0.9rem;
+            margin-bottom: 8px;
+        }
+
+        .favorite-problem {
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 0.75rem;
+            margin-bottom: 8px;
+            text-transform: uppercase;
+        }
+
+        .favorite-insight {
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 0.85rem;
+            line-height: 1.5;
+            font-style: italic;
+        }
+
+        /* ===== EXPORT/SHARE BUTTONS ===== */
+        .results-actions {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 24px;
+        }
+
+        .action-button {
+            background: transparent;
+            border: 2px solid rgba(255, 107, 53, 0.4);
+            color: #FF6B35;
+            padding: 10px 16px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .action-button:hover {
+            border-color: #FF6B35;
+            background: rgba(255, 107, 53, 0.1);
+        }
+
+        /* ===== MODAL ===== */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            animation: fadeIn 0.3s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .modal.active {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-content {
+            background: linear-gradient(135deg, #0A0E27 0%, #1a1f3a 100%);
+            border: 2px solid rgba(255, 107, 53, 0.3);
+            border-radius: 16px;
+            padding: 32px;
+            max-width: 500px;
+            width: 90%;
+            max-height: 80vh;
+            overflow-y: auto;
+            animation: slideUp 0.3s ease;
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .modal-header {
+            font-family: 'Clash Display', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #FF6B35;
+            margin-bottom: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .close-modal {
+            background: transparent;
+            border: none;
+            color: #FF6B35;
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .close-modal:hover {
+            transform: rotate(90deg);
+        }
+
+        .modal-options {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .option-button {
+            background: rgba(255, 107, 53, 0.15);
+            border: 2px solid rgba(255, 107, 53, 0.3);
+            color: #FF6B35;
+            padding: 14px 20px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 0.95rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .option-button:hover {
+            background: rgba(255, 107, 53, 0.25);
+            border-color: #FF6B35;
+            transform: translateX(4px);
+        }
+
+        .share-link-container {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 107, 53, 0.3);
+            border-radius: 8px;
+            padding: 12px;
+            margin-top: 12px;
+        }
+
+        .share-link {
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 0.75rem;
+            word-break: break-all;
+            font-family: 'Space Mono', monospace;
+            margin-bottom: 8px;
+        }
+
+        .copy-button {
+            background: #00D084;
+            color: #0A0E27;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+            width: 100%;
+        }
+
+        .copy-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(0, 208, 132, 0.3);
+        }
+
+        .copy-feedback {
+            color: #00D084;
+            font-size: 0.85rem;
+            margin-top: 8px;
+            text-align: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .copy-feedback.active {
+            opacity: 1;
+        }
+
+        /* ===== FAVORITE STAR ===== */
+        .favorite-star {
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            background: transparent;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .favorite-star:hover {
+            transform: scale(1.2);
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 768px) {
+            .hero {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .hero-content h1 {
+                font-size: 2.2rem;
+            }
+
+            .lenny-card {
+                width: 250px;
+                height: 320px;
+            }
+
+            .problem-chips {
+                flex-direction: column;
+            }
+
+            .chip {
+                width: 100%;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- HERO SECTION -->
+        <div class="hero">
+            <div class="hero-content">
+                <span class="cta-badge">🎯 ASK LENNY'S BRAIN</span>
+                <h1>What Would<br>Lenny Do?</h1>
+                <p>Stuck on a problem? Get advice from 50+ world-class founders, PMs, and growth leaders that have been on Lenny's podcast. We've analyzed 300+ episodes to give you the exact frameworks and insights you need.</p>
+            </div>
+            <div class="hero-image">
+                <div class="lenny-card">
+                    <div class="lenny-placeholder"></div>
+                    <div class="badge-top">🧠 POWERED BY CLAUDE</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- HISTORY PANEL -->
+        <div class="history-panel" id="historyPanel" style="display: none;">
+            <div class="panel-header">
+                <div class="panel-title">📚 Problem History</div>
+                <div>
+                    <button class="clear-button" onclick="clearProblemHistory()">Clear All</button>
+                </div>
+            </div>
+            <div class="history-list" id="historyList"></div>
+        </div>
+
+        <!-- INPUT SECTION -->
+        <div class="input-section">
+            <label class="input-label">What's your problem?</label>
+
+            <div class="quick-problems">
+                <span class="quick-label">💡 Popular Problems</span>
+                <div class="problem-chips" id="popularProblems"></div>
+            </div>
+
+            <div class="error-message" id="errorMessage"></div>
+
+            <div class="input-wrapper">
+                <input
+                    type="text"
+                    class="problem-input"
+                    id="problemInput"
+                    placeholder="Or type your own problem here... (e.g., 'How do I communicate better with my CEO?')"
+                    onkeypress="handleKeyPress(event)"
+                />
+                <button class="ask-button" id="askButton" onclick="askLenny()">ASK</button>
+            </div>
+        </div>
+
+        <!-- LOADING STATE -->
+        <div class="loading" id="loadingState">
+            <div class="loading-spinner"></div>
+            <div class="loading-text">Consulting with Lenny's brain...</div>
+            <div class="loading-subtext">Extracting wisdom from 300+ episodes</div>
+        </div>
+
+        <!-- RESULTS SECTION -->
+        <div class="results-section" id="resultsSection">
+            <button class="back-button" onclick="goBack()">← Back to WWLD</button>
+            <div class="results-header">
+                <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 20px;">
+                    <div>
+                        <h2 id="resultsTitle">Here's What Lenny Would Do</h2>
+                        <p class="results-subtext" id="resultsSubtext">Based on advice from top leaders</p>
+                    </div>
+                    <div class="results-actions">
+                        <button class="action-button" onclick="openExportModal()">📥 Export</button>
+                        <button class="action-button" onclick="openShareModal()">🔗 Share</button>
+                    </div>
+                </div>
+            </div>
+            <div class="solutions-grid" id="solutionsGrid"></div>
+        </div>
+
+        <!-- FAVORITES PANEL -->
+        <div class="favorites-panel" id="favoritesPanel" style="display: none; margin-bottom: 60px;">
+            <div class="panel-header">
+                <div class="panel-title">⭐ Saved Insights</div>
+            </div>
+            <div class="favorites-grid" id="favoritesGrid"></div>
+        </div>
+    </div>
+
+    <!-- EXPORT MODAL -->
+    <div class="modal" id="exportModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <span>📥 Export Results</span>
+                <button class="close-modal" onclick="closeExportModal()">✕</button>
+            </div>
+            <div class="modal-options">
+                <button class="option-button" onclick="exportAsJSON()">📄 Export as JSON</button>
+                <button class="option-button" onclick="exportAsText()">📝 Export as Text</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- SHARE MODAL -->
+    <div class="modal" id="shareModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <span>🔗 Share Results</span>
+                <button class="close-modal" onclick="closeShareModal()">✕</button>
+            </div>
+            <p style="color: rgba(255, 255, 255, 0.7); font-size: 0.9rem; margin-bottom: 16px;">Share this link with others to show them the same results:</p>
+            <div class="share-link-container">
+                <div class="share-link" id="shareLink"></div>
+                <button class="copy-button" onclick="copyShareLink()">📋 Copy Link</button>
+                <div class="copy-feedback" id="copyFeedback">✓ Copied to clipboard!</div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // API Configuration
+        const API_BASE_URL = "http://localhost:8000";
+        let popularProblems = [];
+        let currentResults = null;
+
+        // ===== STORAGE MANAGEMENT =====
+        const STORAGE_KEYS = {
+            HISTORY: 'problemHistory',
+            FAVORITES: 'favorites'
+        };
+
+        function getProblemHistory() {
+            const history = localStorage.getItem(STORAGE_KEYS.HISTORY);
+            return history ? JSON.parse(history) : [];
+        }
+
+        function saveProblemToHistory(problem, category, numSolutions, resultCount) {
+            const history = getProblemHistory();
+            const newEntry = {
+                problem,
+                category,
+                numSolutions,
+                resultCount,
+                timestamp: new Date().toISOString()
+            };
+
+            // Remove duplicate if exists
+            const filtered = history.filter(h => h.problem.toLowerCase() !== problem.toLowerCase());
+
+            // Add new entry to beginning
+            filtered.unshift(newEntry);
+
+            // Keep only last 20
+            const limited = filtered.slice(0, 20);
+            localStorage.setItem(STORAGE_KEYS.HISTORY, JSON.stringify(limited));
+        }
+
+        function clearProblemHistory() {
+            if (confirm('Are you sure you want to clear all history?')) {
+                localStorage.removeItem(STORAGE_KEYS.HISTORY);
+                displayHistoryPanel();
+            }
+        }
+
+        function displayHistoryPanel() {
+            const history = getProblemHistory();
+            const panel = document.getElementById('historyPanel');
+            const list = document.getElementById('historyList');
+
+            if (history.length === 0) {
+                panel.style.display = 'none';
+                return;
+            }
+
+            panel.style.display = 'block';
+            list.innerHTML = history.map((item, index) => `
+                <div class="history-item">
+                    <div class="history-item-text">
+                        <div class="history-item-problem">${item.problem}</div>
+                        <div class="history-item-meta">${item.category} • ${item.resultCount} results • ${new Date(item.timestamp).toLocaleDateString()}</div>
+                    </div>
+                    <div class="history-item-actions">
+                        <button class="history-reask" onclick="reaskFromHistory('${item.problem.replace(/'/g, "\\'")}')">Re-ask</button>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function reaskFromHistory(problem) {
+            document.getElementById('problemInput').value = problem;
+            askLenny();
+        }
+
+        // ===== FAVORITES MANAGEMENT =====
+        function getFavorites() {
+            const favorites = localStorage.getItem(STORAGE_KEYS.FAVORITES);
+            return favorites ? JSON.parse(favorites) : [];
+        }
+
+        function generateFavoriteId(speaker, problem) {
+            return btoa(`${speaker}:${problem}`).slice(0, 12);
+        }
+
+        function toggleFavorite(solution, problem) {
+            const favorites = getFavorites();
+            const favId = generateFavoriteId(solution.speaker, problem);
+
+            const index = favorites.findIndex(f =>
+                f.speaker === solution.speaker && f.problem === problem
+            );
+
+            if (index > -1) {
+                favorites.splice(index, 1);
+            } else {
+                favorites.unshift({
+                    id: favId,
+                    problem,
+                    speaker: solution.speaker,
+                    icon: solution.icon,
+                    insight: solution.insight,
+                    framework: solution.framework,
+                    timestamp: new Date().toISOString()
+                });
+            }
+
+            localStorage.setItem(STORAGE_KEYS.FAVORITES, JSON.stringify(favorites));
+            updateFavoriteButtons();
+            displayFavoritesPanel();
+        }
+
+        function isFavorited(speaker, problem) {
+            const favorites = getFavorites();
+            return favorites.some(f => f.speaker === speaker && f.problem === problem);
+        }
+
+        function removeFavorite(speaker, problem) {
+            const favorites = getFavorites();
+            const filtered = favorites.filter(f => !(f.speaker === speaker && f.problem === problem));
+            localStorage.setItem(STORAGE_KEYS.FAVORITES, JSON.stringify(filtered));
+            updateFavoriteButtons();
+            displayFavoritesPanel();
+        }
+
+        function displayFavoritesPanel() {
+            const favorites = getFavorites();
+            const panel = document.getElementById('favoritesPanel');
+            const grid = document.getElementById('favoritesGrid');
+
+            if (favorites.length === 0) {
+                panel.style.display = 'none';
+                return;
+            }
+
+            panel.style.display = 'block';
+            grid.innerHTML = favorites.map(fav => `
+                <div class="favorite-card">
+                    <button class="favorite-remove" onclick="removeFavorite('${fav.speaker.replace(/'/g, "\\'")}', '${fav.problem.replace(/'/g, "\\'")}')">${fav.icon === '⭐' ? '✕' : '✕'}</button>
+                    <div class="favorite-icon">${fav.icon}</div>
+                    <div class="favorite-speaker">${fav.speaker}</div>
+                    <div class="favorite-problem">${fav.problem}</div>
+                    <div class="favorite-insight">"${fav.insight}"</div>
+                </div>
+            `).join('');
+        }
+
+        function updateFavoriteButtons() {
+            if (!currentResults) return;
+
+            document.querySelectorAll('.favorite-star').forEach(btn => {
+                const speaker = btn.dataset.speaker;
+                const problem = btn.dataset.problem;
+                const isFav = isFavorited(speaker, problem);
+                btn.textContent = isFav ? '★' : '☆';
+                btn.style.color = isFav ? '#F7B801' : 'rgba(255, 255, 255, 0.5)';
+            });
+        }
+
+        // ===== EXPORT/SHARE =====
+        let currentExportData = null;
+
+        function generateExportData() {
+            if (!currentResults) return null;
+
+            return {
+                problem: currentResults.problem,
+                category: currentResults.category,
+                timestamp: new Date().toISOString(),
+                solutions: currentResults.solutions.map(s => ({
+                    speaker: s.speaker,
+                    role: s.speaker_role,
+                    icon: s.icon,
+                    insight: s.insight,
+                    framework1: s.framework,
+                    framework2: s.framework2,
+                    episode: s.episode_name,
+                    timestamp: s.episode_timestamp
+                }))
+            };
+        }
+
+        function openExportModal() {
+            document.getElementById('exportModal').classList.add('active');
+        }
+
+        function closeExportModal() {
+            document.getElementById('exportModal').classList.remove('active');
+        }
+
+        function openShareModal() {
+            generateShareURL();
+            document.getElementById('shareModal').classList.add('active');
+        }
+
+        function closeShareModal() {
+            document.getElementById('shareModal').classList.remove('active');
+        }
+
+        function exportAsJSON() {
+            const data = generateExportData();
+            const json = JSON.stringify(data, null, 2);
+            downloadFile(json, `wwld-export-${Date.now()}.json`, 'application/json');
+            closeExportModal();
+        }
+
+        function exportAsText() {
+            const data = generateExportData();
+            let text = `WWLD - What Would Lenny Do?\n`;
+            text += `${'='.repeat(50)}\n\n`;
+            text += `Problem: ${data.problem}\n`;
+            text += `Category: ${data.category}\n`;
+            text += `Date: ${new Date(data.timestamp).toLocaleString()}\n\n`;
+
+            data.solutions.forEach((sol, i) => {
+                text += `Solution ${i + 1}: ${sol.speaker}\n`;
+                text += `${'-'.repeat(50)}\n`;
+                text += `Role: ${sol.role}\n`;
+                text += `Insight: "${sol.insight}"\n`;
+                text += `Frameworks: ${sol.framework1}, ${sol.framework2}\n`;
+                text += `Episode: ${sol.episode}\n`;
+                if (sol.timestamp) text += `Timestamp: ${sol.timestamp}\n`;
+                text += '\n';
+            });
+
+            downloadFile(text, `wwld-export-${Date.now()}.txt`, 'text/plain');
+            closeExportModal();
+        }
+
+        function downloadFile(content, filename, mimeType) {
+            const blob = new Blob([content], { type: mimeType });
+            const url = URL.createObjectURL(blob);
+            const link = document.createElement('a');
+            link.href = url;
+            link.download = filename;
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+            URL.revokeObjectURL(url);
+        }
+
+        function generateShareURL() {
+            const data = generateExportData();
+            const encoded = btoa(JSON.stringify(data));
+            const baseUrl = window.location.origin + window.location.pathname;
+            const shareUrl = `${baseUrl}?shared=${encoded}`;
+
+            document.getElementById('shareLink').textContent = shareUrl;
+        }
+
+        function copyShareLink() {
+            const link = document.getElementById('shareLink').textContent;
+            navigator.clipboard.writeText(link).then(() => {
+                const feedback = document.getElementById('copyFeedback');
+                feedback.classList.add('active');
+                setTimeout(() => {
+                    feedback.classList.remove('active');
+                }, 2000);
+            });
+        }
+
+        function loadSharedResults() {
+            const params = new URLSearchParams(window.location.search);
+            const shared = params.get('shared');
+
+            if (shared) {
+                try {
+                    const data = JSON.parse(atob(shared));
+                    displaySharedResults(data);
+                } catch (error) {
+                    console.error('Failed to decode shared data:', error);
+                }
+            }
+        }
+
+        function displaySharedResults(data) {
+            currentResults = {
+                problem: data.problem,
+                category: data.category,
+                solutions: data.solutions.map(s => ({
+                    speaker: s.speaker,
+                    speaker_role: s.role,
+                    icon: s.icon,
+                    insight: s.insight,
+                    framework: s.framework1,
+                    framework2: s.framework2,
+                    episode_name: s.episode,
+                    episode_timestamp: s.timestamp
+                }))
+            };
+
+            displayResults(currentResults);
+        }
+
+        // Initialize on page load
+        async function initializePage() {
+            console.log("🚀 Initializing WWLD Frontend...");
+            await loadPopularProblems();
+            displayHistoryPanel();
+            displayFavoritesPanel();
+            loadSharedResults();
+        }
+
+        // Load popular problems from backend
+        async function loadPopularProblems() {
+            try {
+                const response = await fetch(`${API_BASE_URL}/problems`);
+                const data = await response.json();
+                popularProblems = data.problems;
+
+                // Render chips
+                const container = document.getElementById("popularProblems");
+                container.innerHTML = popularProblems.map(problem =>
+                    `<div class="chip" onclick="selectProblem(this, '${problem.replace(/'/g, "\\'")}')">${problem}</div>`
+                ).join("");
+
+            } catch (error) {
+                console.error("❌ Failed to load popular problems:", error);
+                showError("Failed to connect to backend. Make sure it's running on port 8000.");
+            }
+        }
+
+        function selectProblem(element, problemText) {
+            // Remove active class from all chips
+            document.querySelectorAll('.chip').forEach(chip => chip.classList.remove('active'));
+            // Add active class to clicked chip
+            element.classList.add('active');
+            // Set input value
+            document.getElementById('problemInput').value = problemText;
+        }
+
+        function handleKeyPress(event) {
+            if (event.key === 'Enter') {
+                askLenny();
+            }
+        }
+
+        async function askLenny() {
+            const input = document.getElementById('problemInput').value.trim();
+            if (!input) {
+                showError('Please enter a problem or select one of the suggestions');
+                return;
+            }
+
+            // Show loading
+            document.getElementById('loadingState').classList.add('active');
+            document.getElementById('resultsSection').classList.remove('active');
+            document.getElementById('errorMessage').classList.remove('active');
+
+            // Disable button
+            const askButton = document.getElementById('askButton');
+            askButton.disabled = true;
+
+            try {
+                // Call backend API
+                const response = await fetch(`${API_BASE_URL}/ask`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        problem: input,
+                        num_solutions: 3,
+                        problem_category: null
+                    })
+                });
+
+                if (!response.ok) {
+                    throw new Error(`API error: ${response.statusText}`);
+                }
+
+                const result = await response.json();
+                currentResults = result;
+                saveProblemToHistory(input, result.category, 3, result.solutions.length);
+                displayHistoryPanel();
+                displayResults(result);
+
+            } catch (error) {
+                console.error("❌ Error:", error);
+                showError(`Error: ${error.message}`);
+            } finally {
+                document.getElementById('loadingState').classList.remove('active');
+                askButton.disabled = false;
+            }
+        }
+
+        function displayResults(result) {
+            document.getElementById('resultsTitle').textContent = `Here's What Lenny Would Do`;
+            document.getElementById('resultsSubtext').textContent = `About: "${result.problem}" (${result.category})`;
+
+            const grid = document.getElementById('solutionsGrid');
+
+            if (!result.solutions || result.solutions.length === 0) {
+                grid.innerHTML = `
+                    <div style="grid-column: 1/-1; text-align: center; padding: 40px;">
+                        <p style="color: rgba(255,255,255,0.7);">No solutions found. Try rephrasing your question.</p>
+                    </div>
+                `;
+            } else {
+                grid.innerHTML = result.solutions.map(solution => {
+                    const isFav = isFavorited(solution.speaker, result.problem);
+                    return `
+                    <div class="solution-card" style="position: relative;">
+                        <button class="favorite-star" data-speaker="${solution.speaker}" data-problem="${result.problem}" onclick="event.stopPropagation(); toggleFavorite(${JSON.stringify(solution).replace(/"/g, '&quot;')}, '${result.problem.replace(/'/g, "\\'")}')" title="Add to favorites">
+                            ${isFav ? '★' : '☆'}
+                        </button>
+                        <span class="speaker-icon">${solution.icon}</span>
+                        <div class="speaker-name">${solution.speaker}</div>
+                        <div class="speaker-role">${solution.speaker_role}</div>
+                        <p class="solution-insight">"${solution.insight}"</p>
+                        <div>
+                            <span class="framework-tag">${solution.framework}</span>
+                            <span class="framework-tag">${solution.framework2}</span>
+                        </div>
+                        <div class="episode-info">
+                            📻 ${solution.episode_name}
+                            ${solution.episode_timestamp ? `<br>⏱️ ${solution.episode_timestamp}` : ''}
+                        </div>
+                        <a href="#" class="listen-link" onclick="event.preventDefault(); alert('Episode link: ' + solution.episode_name)">
+                            🎧 Listen to episode →
+                        </a>
+                    </div>
+                `;
+                }).join('');
+            }
+
+            displayFavoritesPanel();
+            document.getElementById('resultsSection').classList.add('active');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function showError(message) {
+            const errorDiv = document.getElementById('errorMessage');
+            errorDiv.textContent = message;
+            errorDiv.classList.add('active');
+        }
+
+        function goBack() {
+            document.getElementById('resultsSection').classList.remove('active');
+            document.getElementById('favoritesPanel').style.display = 'none';
+            document.getElementById('exportModal').classList.remove('active');
+            document.getElementById('shareModal').classList.remove('active');
+            document.getElementById('problemInput').value = '';
+            document.querySelectorAll('.chip').forEach(chip => chip.classList.remove('active'));
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // Modal closing on background click
+        window.addEventListener('click', (event) => {
+            const exportModal = document.getElementById('exportModal');
+            const shareModal = document.getElementById('shareModal');
+
+            if (event.target === exportModal) {
+                closeExportModal();
+            }
+            if (event.target === shareModal) {
+                closeShareModal();
+            }
+        });
+
+        // Initialize on load
+        window.addEventListener('load', initializePage);
+    </script>
+</body>
+</html>
