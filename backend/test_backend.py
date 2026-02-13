@@ -20,7 +20,8 @@ def main():
     print("=" * 60)
 
     # Initialize
-    transcripts_dir = Path("/Users/jeevan.patil/Downloads/Lenny")
+    import os
+    transcripts_dir = Path(os.getenv('TRANSCRIPTS_DIR', Path(__file__).parent.parent))
     print(f"\n📁 Loading transcripts from: {transcripts_dir}")
 
     try:

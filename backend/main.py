@@ -63,13 +63,14 @@ async def startup_event():
     """Initialize processors on startup"""
     global transcript_processor, solution_generator, cache_manager
 
-    transcripts_dir = Path("/Users/jeevan.patil/Downloads/Lenny")
+    # Use TRANSCRIPTS_DIR env var or default to current directory
+    transcripts_dir = Path(os.getenv('TRANSCRIPTS_DIR', '.'))
 
     print("🚀 Initializing WWLD Backend...")
     print(f"📁 Loading transcripts from: {transcripts_dir}")
 
     # Enable demo mode if no API credentials available
-    demo_mode = not os.getenv('ANTHROPIC_API_KEY') and not os.getenv('AWS_ACCESS_KEY_ID')
+    demo_mode = not os.getenv('ANTHROPIC_API_KEY')
 
     transcript_processor = TranscriptProcessor(transcripts_dir)
     solution_generator = SolutionGenerator(transcript_processor, demo_mode=demo_mode)

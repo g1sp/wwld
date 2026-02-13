@@ -6,6 +6,7 @@ import json
 from pathlib import Path
 import hashlib
 from datetime import datetime
+from typing import Optional
 
 class CacheManager:
     """Simple file-based caching for solutions"""
@@ -21,7 +22,7 @@ class CacheManager:
         key_str = f"{problem.lower()}:{category}".encode()
         return hashlib.md5(key_str).hexdigest()
 
-    def get(self, problem: str, category: str) -> dict or None:
+    def get(self, problem: str, category: str) -> Optional[dict]:
         """Retrieve cached solution"""
         key = self._get_cache_key(problem, category)
         cache_file = self.cache_dir / f"{key}.json"
@@ -30,8 +31,8 @@ class CacheManager:
             try:
                 with open(cache_file, 'r') as f:
                     return json.load(f)
-            except:
-                pass
+            except (json.JSONDecodeError, IOError) as e:
+                print(f"⚠️  Cache read error: {str(e)}")
 
         return None
 
@@ -59,8 +60,8 @@ class CacheManager:
             try:
                 with open(self.index_file, 'r') as f:
                     return json.load(f)
-            except:
-                pass
+            except (json.JSONDecodeError, IOError) as e:
+                print(f"⚠️  Index load error: {str(e)}")
 
         return {}
 

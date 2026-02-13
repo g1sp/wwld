@@ -1,9 +1,9 @@
 """
 SolutionGenerator - Use Claude to extract relevant wisdom from transcripts
-Uses AWS Bedrock for Claude API access
+Uses Anthropic Claude API for extraction
 """
 
-import boto3
+from anthropic import Anthropic
 import json
 import re
 from transcript_processor import TranscriptProcessor
@@ -18,7 +18,6 @@ class SolutionGenerator:
             "Sean Ellis",
             "Brian Balfour",
             "Marty Cagan",
-            "Sean Ellis",
             "Andrew Wilkinson"
         ],
         "product-eng-conflict": [
@@ -42,7 +41,7 @@ class SolutionGenerator:
         "go-to-market": [
             "Jason M Lemkin",
             "April Dunford",
-            "Andy Raskin",
+            "Andy Raskin_",
             "Sean Ellis"
         ],
         "building-teams": [
@@ -61,7 +60,7 @@ class SolutionGenerator:
             "Nancy Duarte",
             "Kim Scott",
             "Matt Abrahams",
-            "Andy Raskin"
+            "Andy Raskin_"
         ],
         "scaling": [
             "Eric Ries",
@@ -95,7 +94,7 @@ class SolutionGenerator:
         self.processor = transcript_processor
         self.demo_mode = demo_mode
         if not demo_mode:
-            self.bedrock_client = boto3.client('bedrock-runtime', region_name='us-east-1')
+            self.client = Anthropic()
 
     def get_popular_problems(self) -> List[str]:
         """Return list of popular problems"""
@@ -111,7 +110,7 @@ class SolutionGenerator:
 
         # Direct keyword matching
         keyword_map = {
-            "product-market fit": ["pmf", "product market", "fit", "traction", "growth accelerates"],
+            "product-market-fit": ["pmf", "product market", "fit", "traction", "growth accelerates"],
             "product-eng-conflict": ["product eng", "engineering", "team", "conflict", "collaboration"],
             "prioritization": ["prioriti", "what to build", "roadmap", "focus", "build"],
             "team-burnout": ["burnout", "team", "mental health", "stress", "unsustainable"],
@@ -249,22 +248,31 @@ If no relevant insight found, respond with:
 """
 
         try:
-            response = self.bedrock_client.invoke_model(
-                modelId="anthropic.claude-instant-v1:2:100k",
-                body=json.dumps({
-                    "anthropic_version": "bedrock-2023-06-01",
-                    "max_tokens": 500,
-                    "messages": [
-                        {
-                            "role": "user",
-                            "content": prompt
-                        }
-                    ]
-                })
+            response = self.client.messages.create(
+                model="claude-3-5-sonnet-20241022",
+                max_tokens=500,
+                messages=[
+                    {
+                        "role": "user",
+                        "content": prompt
+                    }
+                ]
             )
 
-            response_body = json.loads(response['body'].read())
-            response_text = response_body['content'][0]['text'].strip()
+            # Validate response structure
+            if not response or not hasattr(response, 'content') or not response.content:
+                print(f"⚠️  Invalid API response structure")
+                return None
+
+            if not hasattr(response.content[0], 'text'):
+                print(f"⚠️  API response missing text field")
+                return None
+
+            response_text = response.content[0].text.strip()
+
+            if not response_text:
+                print(f"⚠️  API response text is empty")
+                return None
 
             # Parse JSON response
             result = json.loads(response_text)
@@ -279,6 +287,9 @@ If no relevant insight found, respond with:
             if 'response_text' in locals():
                 print(f"   Response was: {response_text[:200]}")
             return None
+        except (AttributeError, IndexError) as e:
+            print(f"⚠️  API response format error: {str(e)}")
+            return None
         except Exception as e:
             print(f"⚠️  Claude API error: {str(e)}")
             return None
@@ -291,6 +302,12 @@ If no relevant insight found, respond with:
                 "framework1": "Problem-First Product Design",
                 "framework2": "Outcome-Driven Roadmap",
                 "timestamp": "12:34"
+            },
+            "Jake Knapp + John Zeratsky": {
+                "quote": "Use the sprint methodology to make faster decisions. When you're faced with too many options, timeboxing forces you to make choices.",
+                "framework1": "Design Sprint Framework",
+                "framework2": "Time-Boxed Decision Making",
+                "timestamp": "08:15"
             },
             "Jake Knapp + John Zeratsky 2.0": {
                 "quote": "Use the sprint methodology to make faster decisions. When you're faced with too many options, timeboxing forces you to make choices.",
@@ -309,6 +326,30 @@ If no relevant insight found, respond with:
                 "framework1": "Product-Market Fit Definition",
                 "framework2": "Growth as Validation Signal",
                 "timestamp": "05:20"
+            },
+            "Itamar Gilad": {
+                "quote": "Prioritization requires a framework. You need to measure impact against effort and align with your strategic goals.",
+                "framework1": "Impact vs Effort Matrix",
+                "framework2": "Strategic Alignment",
+                "timestamp": "22:45"
+            },
+            "Jason M Lemkin": {
+                "quote": "Go-to-market strategy is everything. Your product won't sell itself—you need a clear customer acquisition and retention strategy.",
+                "framework1": "Customer Acquisition Strategy",
+                "framework2": "Market Positioning",
+                "timestamp": "18:30"
+            },
+            "April Dunford": {
+                "quote": "Positioning is about how customers perceive your product relative to alternatives. Get this right and everything else becomes easier.",
+                "framework1": "Competitive Positioning",
+                "framework2": "Value Proposition",
+                "timestamp": "25:15"
+            },
+            "Andy Raskin_": {
+                "quote": "The best way to communicate is to tell stories that resonate with your audience. Facts tell, but stories sell.",
+                "framework1": "Story-Driven Communication",
+                "framework2": "Audience Empathy",
+                "timestamp": "19:00"
             }
         }
 
@@ -332,6 +373,7 @@ If no relevant insight found, respond with:
             "Brian Chesky": "🤝",
             "Will Larson": "⚙️",
             "Jake Knapp + John Zeratsky": "🎪",
+            "Jake Knapp + John Zeratsky 2.0": "🎪",
             "Richard Rumelt": "🎪",
             "Itamar Gilad": "🔍",
             "Andy Johns": "❤️",
@@ -340,6 +382,7 @@ If no relevant insight found, respond with:
             "Jason M Lemkin": "📢",
             "April Dunford": "🎤",
             "Andy Raskin": "💬",
+            "Andy Raskin_": "💬",
             "Ken Norton": "🎓",
             "Melissa Perri": "⚙️",
             "Ronny Kohavi": "📊",
@@ -360,7 +403,7 @@ If no relevant insight found, respond with:
         # Try direct parsing first
         try:
             return json.loads(text)
-        except:
+        except json.JSONDecodeError:
             pass
 
         # Try extracting JSON from code blocks
@@ -368,7 +411,7 @@ If no relevant insight found, respond with:
         if json_match:
             try:
                 return json.loads(json_match.group(1))
-            except:
+            except json.JSONDecodeError:
                 pass
 
         # Try finding JSON object directly
@@ -376,7 +419,7 @@ If no relevant insight found, respond with:
         if json_match:
             try:
                 return json.loads(json_match.group(0))
-            except:
+            except json.JSONDecodeError:
                 pass
 
         return {}

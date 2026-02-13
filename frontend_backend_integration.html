@@ -1052,8 +1052,19 @@
     </div>
 
     <script>
-        // API Configuration
-        const API_BASE_URL = "http://localhost:8000";
+        // API Configuration - auto-detect or use environment
+        const getAPIBaseURL = () => {
+            // Check URL parameter first
+            const params = new URLSearchParams(window.location.search);
+            if (params.has('apiUrl')) {
+                return params.get('apiUrl');
+            }
+            // Default to same host as frontend (production)
+            // Falls back to localhost:8000 for development
+            const isDev = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
+            return isDev ? 'http://localhost:8000' : `http://${window.location.hostname}:8000`;
+        };
+        const API_BASE_URL = getAPIBaseURL();
         let popularProblems = [];
         let currentResults = null;
 

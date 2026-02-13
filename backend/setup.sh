@@ -43,7 +43,8 @@ echo "  ✅ Dependencies installed"
 # Verify transcripts
 echo ""
 echo "✓ Checking transcripts..."
-transcript_count=$(ls /Users/jeevan.patil/Downloads/Lenny/*.txt 2>/dev/null | wc -l)
+TRANSCRIPTS_DIR="${TRANSCRIPTS_DIR:-.}"
+transcript_count=$(ls "$TRANSCRIPTS_DIR"/*.txt 2>/dev/null | wc -l)
 echo "  Found: $transcript_count transcript files"
 
 if [ $transcript_count -lt 100 ]; then
@@ -53,10 +54,10 @@ fi
 # Test imports
 echo ""
 echo "✓ Testing imports..."
-python3 -c "from transcript_processor import TranscriptProcessor; print('  ✅ TranscriptProcessor OK')"
-python3 -c "from solution_generator import SolutionGenerator; print('  ✅ SolutionGenerator OK')"
-python3 -c "from cache_manager import CacheManager; print('  ✅ CacheManager OK')"
-python3 -c "from anthropic import Anthropic; print('  ✅ Anthropic SDK OK')"
+python3 -c "from transcript_processor import TranscriptProcessor; print('  ✅ TranscriptProcessor OK')" || exit 1
+python3 -c "from solution_generator import SolutionGenerator; print('  ✅ SolutionGenerator OK')" || exit 1
+python3 -c "from cache_manager import CacheManager; print('  ✅ CacheManager OK')" || exit 1
+python3 -c "from anthropic import Anthropic; print('  ✅ Anthropic SDK OK')" || exit 1
 
 # Create cache directory
 echo ""
@@ -79,8 +80,11 @@ echo "2. In another terminal, test it:"
 echo "   python test_backend.py"
 echo ""
 echo "3. Open frontend in browser:"
-echo "   file:///Users/jeevan.patil/Downloads/Lenny/frontend_backend_integration.html"
+echo "   Set TRANSCRIPTS_DIR env var, then open frontend_backend_integration.html"
 echo ""
 echo "4. View API docs:"
 echo "   http://localhost:8000/docs"
+echo ""
+echo "5. Set TRANSCRIPTS_DIR environment variable:"
+echo "   export TRANSCRIPTS_DIR='/path/to/transcripts'"
 echo ""

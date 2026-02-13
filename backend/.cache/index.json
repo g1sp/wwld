@@ -33,5 +33,50 @@
     "problem": "How do I prioritize what to build next?",
     "category": "prioritization",
     "timestamp": "2026-02-11T23:54:08.317879"
+  },
+  "ac8423c583cb54588995e0e5c474b515": {
+    "problem": "How do we launch and market a new product?",
+    "category": "go-to-market",
+    "timestamp": "2026-02-12T09:04:57.480535"
+  },
+  "372a4c7e5b7546a062e19485ee86d94c": {
+    "problem": "test problem",
+    "category": "test-cat",
+    "timestamp": "2026-02-13T10:05:25.237373"
+  },
+  "596b0689b5c2a11f34256ed98e53dab4": {
+    "problem": "How do I know if we have product-market fit?",
+    "category": "product-market-fit",
+    "timestamp": "2026-02-13T10:11:36.094554"
+  },
+  "9ea08cf807d1e6085ae5abb29a6e788b": {
+    "problem": "My engineering and product team don't get along",
+    "category": "product-eng-conflict",
+    "timestamp": "2026-02-13T10:11:36.104205"
+  },
+  "27d68b025616cf92e749c8c2bdb915b8": {
+    "problem": "We're burning out our team",
+    "category": "product-eng-conflict",
+    "timestamp": "2026-02-13T10:11:36.122804"
+  },
+  "836fa2753c4b049925431ddf3c04788c": {
+    "problem": "How do I build a high-performing product team?",
+    "category": "product-eng-conflict",
+    "timestamp": "2026-02-13T10:11:36.141288"
+  },
+  "4099f21142d7cdb863ac942e70b058d8": {
+    "problem": "How do I make data-driven decisions?",
+    "category": "data-driven",
+    "timestamp": "2026-02-13T10:11:36.149775"
+  },
+  "4d7714dfab5c5c089d06a9c09fc8587d": {
+    "problem": "How do I communicate better with my CEO?",
+    "category": "communication",
+    "timestamp": "2026-02-13T10:11:36.159078"
+  },
+  "2a934b24f9c26218463b4bd588646684": {
+    "problem": "What's the right pricing strategy?",
+    "category": "pricing",
+    "timestamp": "2026-02-13T10:11:36.176838"
   }
 }

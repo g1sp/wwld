@@ -1,0 +1,43 @@
+{
+  "name": "WWLD - What Would Lenny Do?",
+  "description": "AI-powered Q&A system extracting real quotes from 300+ Lenny's podcast episodes using Claude AI",
+  "version": "1.0.0",
+  "type": "fullstack",
+  "technologies": ["Python", "FastAPI", "JavaScript", "HTML/CSS", "Anthropic Claude API"],
+  "repository": "https://github.com/g1sp/wwld",
+  "entryPoints": {
+    "frontend": "frontend_backend_integration.html",
+    "backend": "backend/main.py",
+    "api_docs": "http://localhost:8000/docs"
+  },
+  "structure": {
+    "frontend": "frontend_backend_integration.html",
+    "backend": "backend/",
+    "documentation": "*.md",
+    "transcripts": "*.txt"
+  },
+  "development": {
+    "frontend_server": "python3 -m http.server 8001",
+    "backend_server": "cd backend && python main.py",
+    "requires_env": ["ANTHROPIC_API_KEY"]
+  },
+  "commands": {
+    "install": "cd backend && pip install -r requirements.txt",
+    "test": "python backend/test_backend.py",
+    "setup": "cd backend && bash setup.sh"
+  },
+  "ports": {
+    "frontend": 8001,
+    "backend": 8000
+  },
+  "excludePatterns": [
+    "node_modules/",
+    ".git/",
+    "__pycache__/",
+    ".cache/",
+    ".pytest_cache/",
+    "*.pyc",
+    ".DS_Store",
+    ".env"
+  ]
+}
