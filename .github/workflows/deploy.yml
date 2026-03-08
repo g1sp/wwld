@@ -1,0 +1,49 @@
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'frontend_backend_integration.html'
+      - 'data.json'
+      - '.github/workflows/deploy.yml'
+  workflow_dispatch:  # Allow manual trigger
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    name: Build and deploy static site
+    permissions:
+      contents: read
+      pages: write
+      id-token: write
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Pages
+        uses: actions/configure-pages@v3
+
+      - name: Create docs directory
+        run: |
+          mkdir -p docs
+          cp frontend_backend_integration.html docs/index.html
+          cp data.json docs/data.json
+
+      - name: List output files
+        run: ls -lah docs/
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v2
+        with:
+          path: 'docs'
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v2
+
+      - name: Log deployment
+        run: |
+          echo "✅ Deployed to: https://${{ github.repository_owner }}.github.io/$(basename ${{ github.repository }})"

@@ -990,8 +990,8 @@
         <!-- LOADING STATE -->
         <div class="loading" id="loadingState">
             <div class="loading-spinner"></div>
-            <div class="loading-text">Consulting with Lenny's brain...</div>
-            <div class="loading-subtext">Extracting wisdom from 300+ episodes</div>
+            <div class="loading-text" id="loadingText">Looking up your problem...</div>
+            <div class="loading-subtext" id="loadingSubtext">Searching pre-generated insights</div>
         </div>
 
         <!-- RESULTS SECTION -->
@@ -1052,6 +1052,73 @@
     </div>
 
     <script>
+        // Static Data Configuration
+        let staticData = null;
+        let useStaticData = true;
+        let useAPIFallback = false;
+
+        // Load static data from data.json
+        async function loadStaticData() {
+            try {
+                const response = await fetch('data.json');
+                if (response.ok) {
+                    staticData = await response.json();
+                    console.log('✅ Loaded static data with', Object.keys(staticData.responses || {}).length, 'pre-generated problems');
+                    return true;
+                }
+            } catch (error) {
+                console.warn('⚠️ Static data not available:', error.message);
+            }
+            return false;
+        }
+
+        // Fuzzy string matching for problem lookup
+        function fuzzyMatch(str1, str2) {
+            const s1 = str1.toLowerCase().trim();
+            const s2 = str2.toLowerCase().trim();
+
+            // Exact match
+            if (s1 === s2) return 1.0;
+
+            // Check if one is contained in the other
+            if (s1.includes(s2) || s2.includes(s1)) return 0.8;
+
+            // Check word overlap
+            const words1 = s1.split(/\s+/);
+            const words2 = s2.split(/\s+/);
+            const commonWords = words1.filter(w => words2.some(w2 => w === w2 || w.startsWith(w2) || w2.startsWith(w)));
+            if (commonWords.length > 0) return Math.min(0.7, commonWords.length / Math.max(words1.length, words2.length));
+
+            return 0;
+        }
+
+        // Lookup response from static data
+        function lookupResponse(problem) {
+            if (!staticData || !staticData.responses) {
+                return null;
+            }
+
+            // Try exact match first (case-insensitive)
+            const problemKey = problem.toLowerCase().trim();
+            if (staticData.responses[problemKey]) {
+                return staticData.responses[problemKey];
+            }
+
+            // Try fuzzy matching
+            let bestMatch = null;
+            let bestScore = 0.6; // Threshold for fuzzy match
+
+            for (const [key, value] of Object.entries(staticData.responses)) {
+                const score = fuzzyMatch(problemKey, key);
+                if (score > bestScore) {
+                    bestScore = score;
+                    bestMatch = value;
+                }
+            }
+
+            return bestMatch;
+        }
+
         // API Configuration - auto-detect or use environment
         const getAPIBaseURL = () => {
             // Check URL parameter first
@@ -1067,6 +1134,12 @@
         const API_BASE_URL = getAPIBaseURL();
         let popularProblems = [];
         let currentResults = null;
+
+        // Check if URL parameter forces API mode
+        const params = new URLSearchParams(window.location.search);
+        if (params.has('useAPI')) {
+            useAPIFallback = params.get('useAPI') === 'true';
+        }
 
         // ===== STORAGE MANAGEMENT =====
         const STORAGE_KEYS = {
@@ -1358,14 +1431,44 @@
         // Initialize on page load
         async function initializePage() {
             console.log("🚀 Initializing WWLD Frontend...");
-            await loadPopularProblems();
+
+            // Try to load static data first
+            const hasStaticData = await loadStaticData();
+
+            // Load popular problems
+            if (hasStaticData && !useAPIFallback) {
+                console.log("📊 Using static data for popular problems");
+                loadPopularProblemsFromStatic();
+            } else {
+                console.log("🔌 Falling back to API for popular problems");
+                useStaticData = false;
+                useAPIFallback = true;
+                await loadPopularProblemsFromAPI();
+            }
+
             displayHistoryPanel();
             displayFavoritesPanel();
             loadSharedResults();
         }
 
-        // Load popular problems from backend
-        async function loadPopularProblems() {
+        // Load popular problems from static data
+        function loadPopularProblemsFromStatic() {
+            if (!staticData || !staticData.popular_problems) {
+                loadPopularProblemsFromAPI();
+                return;
+            }
+
+            popularProblems = staticData.popular_problems;
+
+            // Render chips
+            const container = document.getElementById("popularProblems");
+            container.innerHTML = popularProblems.map(problem =>
+                `<div class="chip" onclick="selectProblem(this, '${problem.replace(/'/g, "\\'")}')">${problem}</div>`
+            ).join("");
+        }
+
+        // Load popular problems from backend API
+        async function loadPopularProblemsFromAPI() {
             try {
                 const response = await fetch(`${API_BASE_URL}/problems`);
                 const data = await response.json();
@@ -1379,7 +1482,13 @@
 
             } catch (error) {
                 console.error("❌ Failed to load popular problems:", error);
-                showError("Failed to connect to backend. Make sure it's running on port 8000.");
+                // Show warning but don't fail - let user enter their own problem
+                if (!useAPIFallback) {
+                    console.log("⚠️ Falling back to static data population");
+                    if (staticData && staticData.popular_problems) {
+                        loadPopularProblemsFromStatic();
+                    }
+                }
             }
         }
 
@@ -1415,7 +1524,27 @@
             askButton.disabled = true;
 
             try {
-                // Call backend API
+                // Try static data first
+                if (useStaticData && staticData) {
+                    console.log("🔍 Looking up problem in static data...");
+                    const result = lookupResponse(input);
+
+                    if (result) {
+                        console.log("✅ Found in static data!");
+                        currentResults = result;
+                        saveProblemToHistory(input, result.category, 3, result.solutions.length);
+                        displayHistoryPanel();
+                        displayResults(result);
+                        return;
+                    } else {
+                        console.log("⚠️ Problem not in pre-generated set");
+                        showError(`❌ "${input}" is not in our pre-generated set. Try one of the popular problems or use API mode.`);
+                        return;
+                    }
+                }
+
+                // Fallback to API
+                console.log("🔌 Calling backend API...");
                 const response = await fetch(`${API_BASE_URL}/ask`, {
                     method: 'POST',
                     headers: {

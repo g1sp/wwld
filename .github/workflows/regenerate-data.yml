@@ -1,0 +1,61 @@
+name: Regenerate Static Data
+
+on:
+  schedule:
+    # Run every Sunday at 2 AM UTC
+    - cron: '0 2 * * 0'
+  workflow_dispatch:  # Allow manual trigger
+
+jobs:
+  regenerate:
+    runs-on: ubuntu-latest
+    name: Generate pre-cached responses
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: |
+          cd backend
+          pip install -r requirements.txt
+
+      - name: Generate static data
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        run: |
+          cd backend
+          python generate_static_data.py
+
+      - name: Check if data.json changed
+        id: check_changes
+        run: |
+          if git diff --quiet data.json; then
+            echo "changed=false" >> $GITHUB_OUTPUT
+          else
+            echo "changed=true" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Commit and push changes
+        if: steps.check_changes.outputs.changed == 'true'
+        run: |
+          git config user.name "GitHub Actions"
+          git config user.email "actions@github.com"
+          git add data.json
+          git commit -m "Update pre-generated responses [automated]"
+          git push
+
+      - name: Log result
+        run: |
+          if [ "${{ steps.check_changes.outputs.changed }}" = "true" ]; then
+            echo "✅ Static data updated successfully"
+          else
+            echo "ℹ️ No changes to static data"
+          fi

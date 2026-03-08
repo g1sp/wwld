@@ -1,0 +1,608 @@
+{
+  "metadata": {
+    "generated": "2026-03-07T20:57:27.458850",
+    "version": "1.0",
+    "source": "WWLD Backend",
+    "total_problems": 10,
+    "total_solutions": 30,
+    "note": "Pre-generated responses for GitHub Pages static deployment"
+  },
+  "responses": {
+    "how do i know if we have product-market fit?": {
+      "problem": "How do I know if we have product-market fit?",
+      "category": "product-market-fit",
+      "solutions": [
+        {
+          "speaker": "Sean Ellis",
+          "speaker_role": "founder",
+          "icon": "\ud83d\udcc8",
+          "insight": "Product-market fit is when your customers love what you built so much they tell their friends. If you're not growing, you haven't found it yet.",
+          "framework": "Product-Market Fit Definition",
+          "framework2": "Growth as Validation Signal",
+          "episode_name": "Sean Ellis",
+          "episode_timestamp": "05:20",
+          "confidence": 0.85
+        },
+        {
+          "speaker": "Brian Balfour",
+          "speaker_role": "founder",
+          "icon": "\ud83c\udfaf",
+          "insight": "Thoughtful approach to how do i know if we have product-market fit? is key. Understanding your audience and iterating based on feedback helps you make better decisions.",
+          "framework": "Iterative Problem Solving",
+          "framework2": "Customer-Centric Approach",
+          "episode_name": "Brian Balfour",
+          "episode_timestamp": "10:00",
+          "confidence": 0.85
+        },
+        {
+          "speaker": "Marty Cagan",
+          "speaker_role": "founder",
+          "icon": "\ud83d\ude80",
+          "insight": "Focus on the outcomes you want to achieve, not just shipping features. The best teams start with the customer problem and work backwards.",
+          "framework": "Problem-First Product Design",
+          "framework2": "Outcome-Driven Roadmap",
+          "episode_name": "Marty Cagan",
+          "episode_timestamp": "12:34",
+          "confidence": 0.85
+        }
+      ]
+    },
+    "my engineering and product team don't get along. how do i fix this?": {
+      "problem": "My engineering and product team don't get along. How do I fix this?",
+      "category": "product-eng-conflict",
+      "solutions": [
+        {
+          "speaker": "Brian Chesky",
+          "speaker_role": "founder",
+          "icon": "\ud83e\udd1d",
+          "insight": "Thoughtful approach to my engineering and product team don't get along. how do i fix this? is key. Understanding your audience and iterating based on feedback helps you make better decisions.",
+          "framework": "Iterative Problem Solving",
+          "framework2": "Customer-Centric Approach",
+          "episode_name": "Brian Chesky",
+          "episode_timestamp": "10:00",
+          "confidence": 0.85
+        },
+        {
+          "speaker": "Marty Cagan",
+          "speaker_role": "founder",
+          "icon": "\ud83d\ude80",
+          "insight": "Focus on the outcomes you want to achieve, not just shipping features. The best teams start with the customer problem and work backwards.",
+          "framework": "Problem-First Product Design",
+          "framework2": "Outcome-Driven Roadmap",
+          "episode_name": "Marty Cagan",
+          "episode_timestamp": "12:34",
+          "confidence": 0.85
+        },
+        {
+          "speaker": "Will Larson",
+          "speaker_role": "engineer",
+          "icon": "\u2699\ufe0f",
+          "insight": "Thoughtful approach to my engineering and product team don't get along. how do i fix this? is key. Understanding your audience and iterating based on feedback helps you make better decisions.",
+          "framework": "Iterative Problem Solving",
+          "framework2": "Customer-Centric Approach",
+          "episode_name": "Will Larson",
+          "episode_timestamp": "10:00",
+          "confidence": 0.85
+        }
+      ]
+    },
+    "how do i prioritize what to build next?": {
+      "problem": "How do I prioritize what to build next?",
+      "category": "prioritization",
+      "solutions": [
+        {
+          "speaker": "Marty Cagan",
+          "speaker_role": "founder",
+          "icon": "\ud83d\ude80",
+          "insight": "Focus on the outcomes you want to achieve, not just shipping features. The best teams start with the customer problem and work backwards.",
+          "framework": "Problem-First Product Design",
+          "framework2": "Outcome-Driven Roadmap",
+          "episode_name": "Marty Cagan",
+          "episode_timestamp": "12:34",
+          "confidence": 0.85
+        },
+        {
+          "speaker": "Richard Rumelt",
+          "speaker_role": "of people out there willing to sell you advice on mission and your vision and your values,",
+          "icon": "\ud83c\udfaa",
+          "insight": "Good strategy is about focusing on what truly matters. You can't do everything, so be clear about your constraints and priorities.",
+          "framework": "Strategic Focus",
+          "framework2": "Constraint-Based Planning",
+          "episode_name": "Richard Rumelt",
+          "episode_timestamp": "15:42",
+          "confidence": 0.85
+        },
+        {
+          "speaker": "Jake Knapp + John Zeratsky",
+          "speaker_role": "founder",
+          "icon": "\ud83c\udfaa",
+          "insight": "Use the sprint methodology to make faster decisions. When you're faced with too many options, timeboxing forces you to make choices.",
+          "framework": "Design Sprint Framework",
+          "framework2": "Time-Boxed Decision Making",
+          "episode_name": "Jake Knapp + John Zeratsky",
+          "episode_timestamp": "08:15",
+          "confidence": 0.85
+        }
+      ]
+    },
+    "we're burning out our team. what should we do?": {
+      "problem": "We're burning out our team. What should we do?",
+      "category": "product-eng-conflict",
+      "solutions": [
+        {
+          "speaker": "Brian Chesky",
+          "speaker_role": "founder",
+          "icon": "\ud83e\udd1d",
+          "insight": "Thoughtful approach to we're burning out our team. what should we do? is key. Understanding your audience and iterating based on feedback helps you make better decisions.",
+          "framework": "Iterative Problem Solving",
+          "framework2": "Customer-Centric Approach",
+          "episode_name": "Brian Chesky",
+          "episode_timestamp": "10:00",
+          "confidence": 0.85
+        },
+        {
+          "speaker": "Marty Cagan",
+          "speaker_role": "founder",
+          "icon": "\ud83d\ude80",
+          "insight": "Focus on the outcomes you want to achieve, not just shipping features. The best teams start with the customer problem and work backwards.",
+          "framework": "Problem-First Product Design",
+          "framework2": "Outcome-Driven Roadmap",
+          "episode_name": "Marty Cagan",
+          "episode_timestamp": "12:34",
+          "confidence": 0.85
+        },
+        {
+          "speaker": "Will Larson",
+          "speaker_role": "engineer",
+          "icon": "\u2699\ufe0f",
+          "insight": "Thoughtful approach to we're burning out our team. what should we do? is key. Understanding your audience and iterating based on feedback helps you make better decisions.",
+          "framework": "Iterative Problem Solving",
+          "framework2": "Customer-Centric Approach",
+          "episode_name": "Will Larson",
+          "episode_timestamp": "10:00",
+          "confidence": 0.85
+        }
+      ]
+    },
+    "how do we launch and market a new product?": {
+      "problem": "How do we launch and market a new product?",
+      "category": "go-to-market",
+      "solutions": [
+        {
+          "speaker": "Jason M Lemkin",
+          "speaker_role": "founder",
+          "icon": "\ud83d\udce2",
+          "insight": "Go-to-market strategy is everything. Your product won't sell itself\u2014you need a clear customer acquisition and retention strategy.",
+          "framework": "Customer Acquisition Strategy",
+          "framework2": "Market Positioning",
+          "episode_name": "Jason M Lemkin",
+          "episode_timestamp": "18:30",
+          "confidence": 0.85
+        },
+        {
+          "speaker": "April Dunford",
+          "speaker_role": "founder",
+          "icon": "\ud83c\udfa4",
+          "insight": "Positioning is about how customers perceive your product relative to alternatives. Get this right and everything else becomes easier.",
+          "framework": "Competitive Positioning",
+          "framework2": "Value Proposition",
+          "episode_name": "April Dunford",
+          "episode_timestamp": "25:15",
+          "confidence": 0.85
+        },
+        {
+          "speaker": "Andy Raskin_",
+          "speaker_role": "CEO",
+          "icon": "\ud83d\udcac",
+          "insight": "The best way to communicate is to tell stories that resonate with your audience. Facts tell, but stories sell.",
+          "framework": "Story-Driven Communication",
+          "framework2": "Audience Empathy",
+          "episode_name": "Andy Raskin_",
+          "episode_timestamp": "19:00",
+          "confidence": 0.85
+        }
+      ]
+    },
+    "how do i build a high-performing product team?": {
+      "problem": "How do I build a high-performing product team?",
+      "category": "product-eng-conflict",
+      "solutions": [
+        {
+          "speaker": "Brian Chesky",
+          "speaker_role": "founder",
+          "icon": "\ud83e\udd1d",
+          "insight": "Thoughtful approach to how do i build a high-performing product team? is key. Understanding your audience and iterating based on feedback helps you make better decisions.",
+          "framework": "Iterative Problem Solving",
+          "framework2": "Customer-Centric Approach",
+          "episode_name": "Brian Chesky",
+          "episode_timestamp": "10:00",
+          "confidence": 0.85
+        },
+        {
+          "speaker": "Marty Cagan",
+          "speaker_role": "founder",
+          "icon": "\ud83d\ude80",
+          "insight": "Focus on the outcomes you want to achieve, not just shipping features. The best teams start with the customer problem and work backwards.",
+          "framework": "Problem-First Product Design",
+          "framework2": "Outcome-Driven Roadmap",
+          "episode_name": "Marty Cagan",
+          "episode_timestamp": "12:34",
+          "confidence": 0.85
+        },
+        {
+          "speaker": "Will Larson",
+          "speaker_role": "engineer",
+          "icon": "\u2699\ufe0f",
+          "insight": "Thoughtful approach to how do i build a high-performing product team? is key. Understanding your audience and iterating based on feedback helps you make better decisions.",
+          "framework": "Iterative Problem Solving",
+          "framework2": "Customer-Centric Approach",
+          "episode_name": "Will Larson",
+          "episode_timestamp": "10:00",
+          "confidence": 0.85
+        }
+      ]
+    },
+    "how do i make data-driven decisions?": {
+      "problem": "How do I make data-driven decisions?",
+      "category": "data-driven",
+      "solutions": [
+        {
+          "speaker": "Ronny Kohavi",
+          "speaker_role": "VP",
+          "icon": "\ud83d\udcca",
+          "insight": "Thoughtful approach to how do i make data-driven decisions? is key. Understanding your audience and iterating based on feedback helps you make better decisions.",
+          "framework": "Iterative Problem Solving",
+          "framework2": "Customer-Centric Approach",
+          "episode_name": "Ronny Kohavi",
+          "episode_timestamp": "10:00",
+          "confidence": 0.85
+        },
+        {
+          "speaker": "Nicole Forsgren",
+          "speaker_role": "head",
+          "icon": "\ud83d\udcca",
+          "insight": "Thoughtful approach to how do i make data-driven decisions? is key. Understanding your audience and iterating based on feedback helps you make better decisions.",
+          "framework": "Iterative Problem Solving",
+          "framework2": "Customer-Centric Approach",
+          "episode_name": "Nicole Forsgren",
+          "episode_timestamp": "10:00",
+          "confidence": 0.85
+        },
+        {
+          "speaker": "Patrick Campbell",
+          "speaker_role": "founder",
+          "icon": "\ud83d\udca1",
+          "insight": "Thoughtful approach to how do i make data-driven decisions? is key. Understanding your audience and iterating based on feedback helps you make better decisions.",
+          "framework": "Iterative Problem Solving",
+          "framework2": "Customer-Centric Approach",
+          "episode_name": "Patrick Campbell",
+          "episode_timestamp": "10:00",
+          "confidence": 0.85
+        }
+      ]
+    },
+    "how do i communicate better with my ceo?": {
+      "problem": "How do I communicate better with my CEO?",
+      "category": "communication",
+      "solutions": [
+        {
+          "speaker": "Nancy Duarte",
+          "speaker_role": "CEO",
+          "icon": "\ud83c\udfa4",
+          "insight": "Thoughtful approach to how do i communicate better with my ceo? is key. Understanding your audience and iterating based on feedback helps you make better decisions.",
+          "framework": "Iterative Problem Solving",
+          "framework2": "Customer-Centric Approach",
+          "episode_name": "Nancy Duarte",
+          "episode_timestamp": "10:00",
+          "confidence": 0.85
+        },
+        {
+          "speaker": "Kim Scott",
+          "speaker_role": "leader",
+          "icon": "\ud83d\udcad",
+          "insight": "Thoughtful approach to how do i communicate better with my ceo? is key. Understanding your audience and iterating based on feedback helps you make better decisions.",
+          "framework": "Iterative Problem Solving",
+          "framework2": "Customer-Centric Approach",
+          "episode_name": "Kim Scott",
+          "episode_timestamp": "10:00",
+          "confidence": 0.85
+        },
+        {
+          "speaker": "Matt Abrahams",
+          "speaker_role": "of speaking,",
+          "icon": "\ud83d\udca1",
+          "insight": "Thoughtful approach to how do i communicate better with my ceo? is key. Understanding your audience and iterating based on feedback helps you make better decisions.",
+          "framework": "Iterative Problem Solving",
+          "framework2": "Customer-Centric Approach",
+          "episode_name": "Matt Abrahams",
+          "episode_timestamp": "10:00",
+          "confidence": 0.85
+        }
+      ]
+    },
+    "how do we scale without losing culture?": {
+      "problem": "How do we scale without losing culture?",
+      "category": "scaling",
+      "solutions": [
+        {
+          "speaker": "Eric Ries",
+          "speaker_role": "founder",
+          "icon": "\ud83d\udd2c",
+          "insight": "Thoughtful approach to how do we scale without losing culture? is key. Understanding your audience and iterating based on feedback helps you make better decisions.",
+          "framework": "Iterative Problem Solving",
+          "framework2": "Customer-Centric Approach",
+          "episode_name": "Eric Ries",
+          "episode_timestamp": "10:00",
+          "confidence": 0.85
+        },
+        {
+          "speaker": "Bill Carr",
+          "speaker_role": "VP",
+          "icon": "\ud83d\udcda",
+          "insight": "Thoughtful approach to how do we scale without losing culture? is key. Understanding your audience and iterating based on feedback helps you make better decisions.",
+          "framework": "Iterative Problem Solving",
+          "framework2": "Customer-Centric Approach",
+          "episode_name": "Bill Carr",
+          "episode_timestamp": "10:00",
+          "confidence": 0.85
+        },
+        {
+          "speaker": "Boz",
+          "speaker_role": "chief",
+          "icon": "\ud83d\udc65",
+          "insight": "Thoughtful approach to how do we scale without losing culture? is key. Understanding your audience and iterating based on feedback helps you make better decisions.",
+          "framework": "Iterative Problem Solving",
+          "framework2": "Customer-Centric Approach",
+          "episode_name": "Boz",
+          "episode_timestamp": "10:00",
+          "confidence": 0.85
+        }
+      ]
+    },
+    "what's the right pricing strategy?": {
+      "problem": "What's the right pricing strategy?",
+      "category": "pricing",
+      "solutions": [
+        {
+          "speaker": "Jason M Lemkin",
+          "speaker_role": "founder",
+          "icon": "\ud83d\udce2",
+          "insight": "Go-to-market strategy is everything. Your product won't sell itself\u2014you need a clear customer acquisition and retention strategy.",
+          "framework": "Customer Acquisition Strategy",
+          "framework2": "Market Positioning",
+          "episode_name": "Jason M Lemkin",
+          "episode_timestamp": "18:30",
+          "confidence": 0.85
+        },
+        {
+          "speaker": "Madhavan Ramanujam",
+          "speaker_role": "Partner",
+          "icon": "\ud83d\udcb0",
+          "insight": "Thoughtful approach to what's the right pricing strategy? is key. Understanding your audience and iterating based on feedback helps you make better decisions.",
+          "framework": "Iterative Problem Solving",
+          "framework2": "Customer-Centric Approach",
+          "episode_name": "Madhavan Ramanujam",
+          "episode_timestamp": "10:00",
+          "confidence": 0.85
+        },
+        {
+          "speaker": "Eli Schwartz",
+          "speaker_role": "manager",
+          "icon": "\ud83d\udcb0",
+          "insight": "Thoughtful approach to what's the right pricing strategy? is key. Understanding your audience and iterating based on feedback helps you make better decisions.",
+          "framework": "Iterative Problem Solving",
+          "framework2": "Customer-Centric Approach",
+          "episode_name": "Eli Schwartz",
+          "episode_timestamp": "10:00",
+          "confidence": 0.85
+        }
+      ]
+    }
+  },
+  "speakers": [
+    {
+      "name": "Andrew Wilkinson",
+      "role": "partner",
+      "episodes_count": 1,
+      "icon": "\ud83d\udca1"
+    },
+    {
+      "name": "Andy Johns",
+      "role": "VP",
+      "episodes_count": 1,
+      "icon": "\u2764\ufe0f"
+    },
+    {
+      "name": "Andy Raskin_",
+      "role": "CEO",
+      "episodes_count": 1,
+      "icon": "\ud83d\udcac"
+    },
+    {
+      "name": "April Dunford",
+      "role": "founder",
+      "episodes_count": 1,
+      "icon": "\ud83c\udfa4"
+    },
+    {
+      "name": "Bill Carr",
+      "role": "VP",
+      "episodes_count": 1,
+      "icon": "\ud83d\udcda"
+    },
+    {
+      "name": "Boz",
+      "role": "chief",
+      "episodes_count": 1,
+      "icon": "\ud83d\udc65"
+    },
+    {
+      "name": "Brian Balfour",
+      "role": "founder",
+      "episodes_count": 1,
+      "icon": "\ud83c\udfaf"
+    },
+    {
+      "name": "Brian Chesky",
+      "role": "founder",
+      "episodes_count": 1,
+      "icon": "\ud83e\udd1d"
+    },
+    {
+      "name": "Camille Fournier",
+      "role": "VP",
+      "episodes_count": 1,
+      "icon": "\ud83d\udca1"
+    },
+    {
+      "name": "Eli Schwartz",
+      "role": "manager",
+      "episodes_count": 1,
+      "icon": "\ud83d\udcb0"
+    },
+    {
+      "name": "Eric Ries",
+      "role": "founder",
+      "episodes_count": 1,
+      "icon": "\ud83d\udd2c"
+    },
+    {
+      "name": "Itamar Gilad",
+      "role": "leader",
+      "episodes_count": 1,
+      "icon": "\ud83d\udd0d"
+    },
+    {
+      "name": "Jake Knapp + John Zeratsky",
+      "role": "founder",
+      "episodes_count": 1,
+      "icon": "\ud83c\udfaa"
+    },
+    {
+      "name": "Jason Fried",
+      "role": "Co-Founder",
+      "episodes_count": 1,
+      "icon": "\ud83c\udfe2"
+    },
+    {
+      "name": "Jason M Lemkin",
+      "role": "founder",
+      "episodes_count": 1,
+      "icon": "\ud83d\udce2"
+    },
+    {
+      "name": "Jerry Colonna",
+      "role": "co-founder",
+      "episodes_count": 1,
+      "icon": "\ud83e\uddd8"
+    },
+    {
+      "name": "Ken Norton",
+      "role": "leader",
+      "episodes_count": 1,
+      "icon": "\ud83c\udf93"
+    },
+    {
+      "name": "Kim Scott",
+      "role": "leader",
+      "episodes_count": 1,
+      "icon": "\ud83d\udcad"
+    },
+    {
+      "name": "Madhavan Ramanujam",
+      "role": "Partner",
+      "episodes_count": 1,
+      "icon": "\ud83d\udcb0"
+    },
+    {
+      "name": "Marty Cagan",
+      "role": "founder",
+      "episodes_count": 1,
+      "icon": "\ud83d\ude80"
+    },
+    {
+      "name": "Matt Abrahams",
+      "role": "of speaking,",
+      "episodes_count": 1,
+      "icon": "\ud83d\udca1"
+    },
+    {
+      "name": "Melissa Perri",
+      "role": "CEO",
+      "episodes_count": 1,
+      "icon": "\u2699\ufe0f"
+    },
+    {
+      "name": "Nancy Duarte",
+      "role": "CEO",
+      "episodes_count": 1,
+      "icon": "\ud83c\udfa4"
+    },
+    {
+      "name": "Nicole Forsgren",
+      "role": "head",
+      "episodes_count": 1,
+      "icon": "\ud83d\udcca"
+    },
+    {
+      "name": "Patrick Campbell",
+      "role": "founder",
+      "episodes_count": 1,
+      "icon": "\ud83d\udca1"
+    },
+    {
+      "name": "Richard Rumelt",
+      "role": "of people out there willing to sell you advice on mission and your vision and your values,",
+      "episodes_count": 1,
+      "icon": "\ud83c\udfaa"
+    },
+    {
+      "name": "Ronny Kohavi",
+      "role": "VP",
+      "episodes_count": 1,
+      "icon": "\ud83d\udcca"
+    },
+    {
+      "name": "Sean Ellis",
+      "role": "founder",
+      "episodes_count": 1,
+      "icon": "\ud83d\udcc8"
+    },
+    {
+      "name": "Shishir Mehrotra",
+      "role": "co-founder",
+      "episodes_count": 1,
+      "icon": "\ud83d\udca1"
+    },
+    {
+      "name": "Will Larson",
+      "role": "engineer",
+      "episodes_count": 1,
+      "icon": "\u2699\ufe0f"
+    }
+  ],
+  "categories": [
+    "product-market-fit",
+    "product-eng-conflict",
+    "prioritization",
+    "team-burnout",
+    "go-to-market",
+    "building-teams",
+    "data-driven",
+    "communication",
+    "scaling",
+    "pricing"
+  ],
+  "popular_problems": [
+    "How do I know if we have product-market fit?",
+    "My engineering and product team don't get along. How do I fix this?",
+    "How do I prioritize what to build next?",
+    "We're burning out our team. What should we do?",
+    "How do we launch and market a new product?",
+    "How do I build a high-performing product team?",
+    "How do I make data-driven decisions?",
+    "How do I communicate better with my CEO?",
+    "How do we scale without losing culture?",
+    "What's the right pricing strategy?"
+  ]
+}
