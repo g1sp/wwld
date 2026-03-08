@@ -7,6 +7,7 @@ on:
     paths:
       - 'frontend_backend_integration.html'
       - 'data.json'
+      - 'lenny.png'
       - '.github/workflows/deploy.yml'
   workflow_dispatch:  # Allow manual trigger
 
@@ -24,6 +25,7 @@ jobs:
           mkdir -p docs
           cp frontend_backend_integration.html docs/index.html
           cp data.json docs/data.json
+          cp lenny.png docs/lenny.png
 
       - name: List output files
         run: ls -lah docs/
