@@ -966,7 +966,12 @@
 
         <!-- INPUT SECTION -->
         <div class="input-section">
-            <label class="input-label">What's your problem?</label>
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+                <label class="input-label" style="margin-bottom: 0;">What's your problem?</label>
+                <div id="modeIndicator" style="font-size: 0.85rem; padding: 6px 12px; background: rgba(0, 208, 132, 0.2); border: 1px solid #00D084; border-radius: 20px; color: #00D084;">
+                    📊 Static Mode
+                </div>
+            </div>
 
             <div class="quick-problems">
                 <span class="quick-label">💡 Popular Problems</span>
@@ -1139,6 +1144,43 @@
         const params = new URLSearchParams(window.location.search);
         if (params.has('useAPI')) {
             useAPIFallback = params.get('useAPI') === 'true';
+        }
+
+        // Function to enable API mode
+        function enableAPIMode() {
+            useStaticData = false;
+            useAPIFallback = true;
+
+            // Update UI indicator
+            const modeIndicator = document.getElementById('modeIndicator');
+            if (modeIndicator) {
+                modeIndicator.innerHTML = '🔌 API Mode (Live Claude Queries)';
+                modeIndicator.style.background = 'rgba(255, 107, 53, 0.2)';
+                modeIndicator.style.borderColor = '#FF6B35';
+                modeIndicator.style.color = '#FF6B35';
+            }
+
+            console.log('✅ API Mode enabled - can now query any problem');
+            console.log('⚠️ Make sure backend is running at localhost:8000');
+            alert('✅ API Mode Enabled!\n\nYou can now ask any question and get live Claude responses.\n\n⚠️ Make sure your backend is running at localhost:8000\n\nFor production: Run "python backend/main.py" on your backend server.');
+        }
+
+        // Update mode indicator
+        function updateModeIndicator() {
+            const modeIndicator = document.getElementById('modeIndicator');
+            if (!modeIndicator) return;
+
+            if (useStaticData && staticData) {
+                modeIndicator.innerHTML = '📊 Static Mode (10 Pre-generated Problems)';
+                modeIndicator.style.background = 'rgba(0, 208, 132, 0.2)';
+                modeIndicator.style.borderColor = '#00D084';
+                modeIndicator.style.color = '#00D084';
+            } else if (useAPIFallback) {
+                modeIndicator.innerHTML = '🔌 API Mode (Live Claude Queries)';
+                modeIndicator.style.background = 'rgba(255, 107, 53, 0.2)';
+                modeIndicator.style.borderColor = '#FF6B35';
+                modeIndicator.style.color = '#FF6B35';
+            }
         }
 
         // ===== STORAGE MANAGEMENT =====
@@ -1449,6 +1491,7 @@
             displayHistoryPanel();
             displayFavoritesPanel();
             loadSharedResults();
+            updateModeIndicator();
         }
 
         // Load popular problems from static data
@@ -1538,7 +1581,33 @@
                         return;
                     } else {
                         console.log("⚠️ Problem not in pre-generated set");
-                        showError(`❌ "${input}" is not in our pre-generated set. Try one of the popular problems or use API mode.`);
+                        // Show error with option to enable API mode
+                        const errorDiv = document.getElementById('errorMessage');
+                        errorDiv.innerHTML = `
+                            <div style="display: flex; justify-content: space-between; align-items: center;">
+                                <div>
+                                    <strong>❌ Problem not pre-generated</strong><br>
+                                    <span style="font-size: 0.9rem; opacity: 0.9;">"${input}" is not in our 10 popular pre-generated problems.</span>
+                                </div>
+                                <button onclick="enableAPIMode(); setTimeout(() => askLenny(), 500);" style="
+                                    background: linear-gradient(135deg, #FF6B35 0%, #F7B801 100%);
+                                    color: #0A0E27;
+                                    border: none;
+                                    padding: 8px 16px;
+                                    border-radius: 6px;
+                                    cursor: pointer;
+                                    font-weight: 600;
+                                    white-space: nowrap;
+                                    margin-left: 16px;
+                                    font-size: 0.85rem;
+                                ">
+                                    🔌 Try with API
+                                </button>
+                            </div>
+                        `;
+                        errorDiv.classList.add('active');
+                        document.getElementById('loadingState').classList.remove('active');
+                        document.getElementById('askButton').disabled = false;
                         return;
                     }
                 }
