@@ -10,6 +10,8 @@ jobs:
   regenerate:
     runs-on: ubuntu-latest
     name: Generate pre-cached responses
+    permissions:
+      contents: write
 
     steps:
       - name: Checkout repository
